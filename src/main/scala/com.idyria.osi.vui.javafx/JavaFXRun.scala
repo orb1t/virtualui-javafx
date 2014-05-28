@@ -31,6 +31,9 @@ object JavaFXRun {
 
   var semaphore = new Semaphore(0)
 
+  VUIBuilder.setImplementationForCurrentThread(new JavaFXVuiBuilder)
+  VUIBuilder.defaultImplementation = new JavaFXVuiBuilder
+  
   def onJavaFX(cl: ⇒ Unit) = {
 
     // Check Java FX has been started

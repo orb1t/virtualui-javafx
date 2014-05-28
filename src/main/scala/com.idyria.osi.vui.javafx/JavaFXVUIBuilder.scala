@@ -26,27 +26,81 @@ import javafx.geometry.Pos
 import com.idyria.osi.vui.core.components.form.VUIInputText
 import javafx.scene.control.TextField
 import com.idyria.osi.vui.javafx.chart.JFXChartBuilder
+import com.idyria.osi.vui.javafx.model.JFXTextModelSupport
+import com.idyria.osi.vui.javafx.css.JFXCSSSupport
+import javafx.beans.InvalidationListener
+import javafx.beans.Observable
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
+import javafx.event.EventHandler
+import javafx.stage.WindowEvent
+import javafx.scene.image.ImageView
+import javax.imageio.ImageIO
+import java.awt.image.BufferedImage
+import java.awt.AlphaComposite
+import java.awt.RenderingHints
+import javafx.scene.image.Image
+import com.idyria.osi.vui.javafx.containers.JFXTabPaneInterface
+import com.idyria.osi.vui.javafx.containers.JFXSplitPaneInterface
+import javafx.scene.control.TextArea
+import com.idyria.osi.vui.javafx.containers.JFXTitledPaneInterface
+import javafx.scene.control.ComboBox
+import com.idyria.osi.vui.core.components.model.ComboBoxModel
+import javafx.scene.control.ListView
+import javafx.scene.layout.HBox
+import javafx.scene.layout.VBox
+import com.idyria.osi.vui.javafx.table.JFXTableBuilder
+import com.idyria.osi.vui.javafx.tree.JFXTreeBuilder
+import com.idyria.osi.vui.core.components.model.ListModel
+import com.idyria.osi.vui.core.components.form.ListBuilderInterface
+import javafx.scene.text.Text
+import com.idyria.osi.vui.core.components.controls.VUIText
+import com.idyria.osi.vui.core.components.model.DefaultComboBoxModel
+import com.idyria.osi.vui.javafx.containers.JFXScrollPaneInterface
+import com.idyria.osi.tea.logging.TeaLogging
+import com.idyria.osi.tea.logging.TLogSource
+import com.idyria.osi.vui.core.components.controls.ControlsBuilderInterface
+import com.idyria.osi.vui.javafx.builders.JFXFormBuilder
+import com.idyria.osi.vui.javafx.JavaFXRun
+import com.idyria.osi.vui.core.VUIBuilder
+import javafx.event.ActionEvent
+import javafx.geometry.Insets
 
-class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilder {
+class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
+    with JFXChartBuilder
+    with JFXTabPaneInterface
+    with JFXSplitPaneInterface
+    with JFXScrollPaneInterface
+    with JFXTitledPaneInterface
+    with JFXTableBuilder
+    with JFXTreeBuilder
+    with JFXFormBuilder
+    with ControlsBuilderInterface[Node]
+    with ListBuilderInterface[Node]
+
+    with TLogSource {
 
   // Utils
   //------------
-   override def onUIThread(cl: => Unit) {
-     
-     JavaFXRun.onJavaFX({cl})
+  override def onUIThread(cl: => Unit) {
+
+    JavaFXRun.onJavaFX({ cl })
 
   }
-  
+
   // Members declared in com.idyria.osi.vui.core.components.scenegraph.SceneGraphBuilder
   //--------------------
+
   def group(): com.idyria.osi.vui.core.components.scenegraph.SGGroup[javafx.scene.Node] = {
-    panel
+
+    return panel
+
   }
 
   // Members declared in com.idyria.osi.vui.core.components.containers.ContainerBuilder
   //--------------------
   def panel: com.idyria.osi.vui.core.components.containers.VUIPanel[javafx.scene.Node] = {
-    return new JavaFXNodeDelegate(new Pane()) with VUIPanel[javafx.scene.Node] {
+    return new JavaFXNodeDelegate(new Pane()) with VUIPanel[javafx.scene.Node] with JFXCSSSupport {
 
       // Add node
       //----------------
@@ -56,7 +110,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
 
           this.delegate.getChildren().add(n.base.asInstanceOf[Node])
 
-          println(s"Adding nodes to ${this.delegate} panel: " + n.base)
+        // println(s"Adding nodes to ${this.delegate} panel: " + n.base)
 
         case _ ⇒
       }
@@ -66,7 +120,14 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
       this.onMatch("layout.updated") {
 
         case p: javafx.scene.layout.Pane ⇒
-
+        
+        	/*this.delegate.getChildren()
+          p.children.getChildren().add*/
+        p.getChildren().addAll(this.delegate.getChildren())
+        /*this.delegate.getChildren().foreach {
+          c => 
+            
+        }*/
           this.delegate = p
 
         case _ ⇒
@@ -78,90 +139,125 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
 
       }
 
-      /*
-      
-      var currentLayout: com.idyria.osi.vui.core.components.layout.VUILayout[javafx.scene.Node] = null
+      // Conflicts resolution
+      override def clear: Unit = {
 
-      def layout: com.idyria.osi.vui.core.components.layout.VUILayout[javafx.scene.Node] = currentLayout
-
-      /**
-       * Change Layout
-       * In JFX, this might need replacing the current node
-       */
-      def layout(newLayout: com.idyria.osi.vui.core.components.layout.VUILayout[javafx.scene.Node]): Unit = {
-
-        newLayout.setTargetGroup(this)
-
-        this.currentLayout = newLayout
-
-        println(s"Chaging layout  to ${newLayout}")
-
-        newLayout match {
-          case gp: GridPane =>
-
-            println(s"Chaging layout  to ${gp}")
-            this.delegate = gp
-
-          case _ =>
-        }
-
-      }*/
+        this.delegate.getChildren().clear
+        super.clear
+      }
 
     }
-  }
-  def tabpane: com.idyria.osi.vui.core.components.containers.VUITabPane[javafx.scene.Node] = {
-    null
   }
 
   // Members declared in com.idyria.osi.vui.core.components.controls.ControlsBuilder
   def button(text: String): com.idyria.osi.vui.core.components.controls.VUIButton[javafx.scene.Node] = {
 
-    return new JavaFXNodeDelegate(new Button(text)) with VUIButton[javafx.scene.Node] {
+    return new JavaFXNodeDelegate(new Button(text)) with VUIButton[javafx.scene.Node] with JFXCSSSupport {
+
+      override def click = {
+        this.delegate.fire
+        this.delegate.fireEvent(new ActionEvent(null, this.delegate))
+      }
 
     }
 
   }
-  def image(text: java.net.URL): com.idyria.osi.vui.core.components.controls.VUIImage[javafx.scene.Node] = {
-    null
+  def image(path: java.net.URL): com.idyria.osi.vui.core.components.controls.VUIImage[javafx.scene.Node] = {
+
+    return new JavaFXNodeDelegate(new ImageView) with com.idyria.osi.vui.core.components.controls.VUIImage[javafx.scene.Node] with JFXCSSSupport {
+
+      // Load Image
+      //----------------
+      // Save URL
+      var url = path
+
+      /**
+       * Load into JLabel and resize if necessary
+       */
+      def load = {
+
+        if (this.delegate.getImage() == null) {
+
+          //println(s"********* LOADING IMAGE ***********")
+          // Load
+          //------------------
+          //Image(java.lang.String url, double requestedWidth, double requestedHeight, boolean preserveRatio, boolean smooth)
+          var img = new Image(url.toExternalForm())
+          this.delegate.setImage(img)
+          this.delegate.setFitWidth(img.getWidth())
+          this.delegate.setFitHeight(img.getHeight())
+          /*
+            var sizeDimension = (delegate.getFitWidth(),delegate.getFitHeight())
+
+            // Read Source Image
+            //----------------
+            var originalImage = ImageIO.read(url)
+
+            // Resolve Sizes for resizing
+            //-------------------------------
+            (delegate.getFitWidth(),delegate.getFitHeight()) match {
+
+              // Resize based on Width
+              case (width,-1) =>
+
+                  sizeDimension = (sizeDimension._1,width * originalImage.getHeight / originalImage.getWidth)
+                  size(sizeDimension._1.toInt,sizeDimension._2.toInt)
+
+              // Resize based on Height
+              case (-1,height) =>
+                  
+                  sizeDimension = ( height * originalImage.getWidth / originalImage.getHeight,sizeDimension._2)
+                  size(sizeDimension._1.toInt,sizeDimension._2.toInt)
+
+              // Do nothing
+              case _ =>
+            }
+
+            //-- Prepare target Image
+            //-----------
+            var resizedImage = new BufferedImage(sizeDimension._1.toInt, sizeDimension._2.toInt, originalImage.getType);
+            var g = resizedImage.createGraphics
+
+            g.setComposite(AlphaComposite.Src);
+            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+            RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            g.setRenderingHint(RenderingHints.KEY_RENDERING,
+            RenderingHints.VALUE_RENDER_QUALITY);
+            g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+            RenderingHints.VALUE_ANTIALIAS_ON);
+
+            g.drawImage(originalImage, 0, 0,sizeDimension._1.toInt,sizeDimension._2.toInt, null);
+            g.dispose
+
+            // Set to Label
+            //------------------
+            this.delegate.setImage(resizedImage)*/
+
+        }
+      }
+    }
+
   }
   def label(text: String): com.idyria.osi.vui.core.components.controls.VUILabel[javafx.scene.Node] = {
 
-    return new JavaFXNodeDelegate(new Label(text)) with VUILabel[javafx.scene.Node] {
+    return new JavaFXNodeDelegate(new Label(text)) with VUILabel[javafx.scene.Node] with JFXCSSSupport {
 
       // Text
       //----------
       def setText(str: String) = this.delegate.setText(str)
+      def getText = delegate.getText
 
     }
   }
   def text: com.idyria.osi.vui.core.components.controls.VUIText[javafx.scene.Node] = {
-    null
-  }
-  def tree: com.idyria.osi.vui.core.components.controls.VUITree[javafx.scene.Node] = {
-    null
-  }
+    return new JavaFXNodeDelegate(new Text) with VUIText[javafx.scene.Node] with JFXCSSSupport {
 
-  // Members declared in com.idyria.osi.vui.core.components.form.FormBuilder
-  def checkBox: com.idyria.osi.vui.core.components.form.VUICheckBox[javafx.scene.Node] = {
-    null
-  }
-  def comboBox: com.idyria.osi.vui.core.components.form.VUIComboBox[javafx.scene.Node] = {
-    null
-  }
-  def list(): com.idyria.osi.vui.core.components.form.VUIList[javafx.scene.Node] = {
-    null
-  }
-  def textArea(): com.idyria.osi.vui.core.components.form.VUIInputText[javafx.scene.Node] = {
-    null
-  }
-  def textInput(): com.idyria.osi.vui.core.components.form.VUIInputText[javafx.scene.Node] = {
-
-    return new JavaFXNodeDelegate[TextField](new TextField) with VUIInputText[javafx.scene.Node] {
-
-      override def setText(str: String) = delegate.setText(str)
+      // Text
+      //----------
+      def setText(str: String) = this.delegate.setText(str)
+      def getText = delegate.getText
 
     }
-
   }
 
   // Members declared in com.idyria.osi.vui.core.components.layout.LayoutBuilder
@@ -179,7 +275,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
           //----------------
           case Constraint("align", "center") ⇒
 
-            println("--- Stack Pane align center")
+            //println("--- Stack Pane align center")
             StackPane.setAlignment(node.base, Pos.CENTER)
 
           case c ⇒
@@ -199,7 +295,9 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
 
     new GridPane with com.idyria.osi.vui.core.components.layout.VUIGridLayout[javafx.scene.Node] {
 
-      this.setGridLinesVisible(true)
+      this.setGridLinesVisible(false)
+      this.setVgap(5.0)
+      this.setHgap(5.0)
 
       override def applyConstraints(node: SGNode[Node], inputConstraints: Constraints) = {
 
@@ -211,8 +309,12 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
           case _                            ⇒
         }
 
+        //GridPane.setHgrow(node.base, Priority.NEVER)
+        //GridPane.setVgrow(node.base, Priority.NEVER)
+
         // Resolve
         //------------------
+        GridPane.setHgrow(node.base, Priority.NEVER)
         constraints.foreach {
 
           case Constraint("column", c: Int) ⇒
@@ -258,7 +360,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
 
           case Constraint("expand", v) ⇒
 
-            println("Setting expand")
+            // println("Setting expand")
             GridPane.setHgrow(node.base, Priority.ALWAYS)
             GridPane.setVgrow(node.base, Priority.ALWAYS)
 
@@ -269,18 +371,27 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
 
           case Constraint("expandWidth", v) ⇒
 
+            logFine("[JFX]Setting expandWidth on " + node.base)
             GridPane.setHgrow(node.base, Priority.ALWAYS)
 
-          // Spead
+          // Spead/Span
           //-------------------
           case Constraint("spread", v) ⇒
 
             //println("Setting spread on: " + node.base)
             GridPane.setColumnSpan(node.base, GridPane.REMAINING)
+          //GridPane.setRowSpan(node.base, GridPane.REMAINING)
 
+          case Constraint("rowspan", v) ⇒
+            GridPane.setRowSpan(node.base, v.asInstanceOf[Int])
+          case Constraint("colspan", v) ⇒
+
+            //println("Setting colspan on: " + node.base+" => "+v)
+            GridPane.setColumnSpan(node.base, v.asInstanceOf[Int])
           case c ⇒
 
-          //println("Constraint: " + c)
+            logWarn("[Unsupported Constraint] Constraint: " + c.name)
+          //println()
         }
 
       }
@@ -288,13 +399,97 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
     }
   }
   def hbox: com.idyria.osi.vui.core.components.layout.VUIHBoxLayout[javafx.scene.Node] = {
-    null
+    new HBox with com.idyria.osi.vui.core.components.layout.VUIHBoxLayout[javafx.scene.Node] {
+
+      override def applyConstraints(node: SGNode[Node], inputConstraints: Constraints) = {
+
+        // Prepare input constraints
+        //-------------------
+        var constraints = inputConstraints
+        node match {
+          case constrainable: Constrainable ⇒ constraints = inputConstraints + constrainable.fixedConstraints
+          case _                            ⇒
+        }
+
+        //GridPane.setHgrow(node.base, Priority.NEVER)
+        //GridPane.setVgrow(node.base, Priority.NEVER)
+
+        // Resolve
+        //------------------
+        GridPane.setHgrow(node.base, Priority.NEVER)
+        constraints.foreach {
+
+          // Expand
+          //-----------------
+
+          case Constraint("expand", v) ⇒
+
+            HBox.setHgrow(node.base, Priority.ALWAYS)
+
+          case Constraint("expandWidth", v) ⇒
+
+            HBox.setHgrow(node.base, Priority.ALWAYS)
+
+          case c ⇒
+
+          //logWarn("[Unsupported Constraint] Constraint: " + c.name)
+          //println()
+        }
+
+      }
+
+    }
   }
   def none: com.idyria.osi.vui.core.components.layout.VUIFreeLayout[javafx.scene.Node] = {
     null
   }
   def vbox: com.idyria.osi.vui.core.components.layout.VUIVBoxLayout[javafx.scene.Node] = {
-    null
+    new VBox with com.idyria.osi.vui.core.components.layout.VUIVBoxLayout[javafx.scene.Node] {
+
+      override def applyConstraints(node: SGNode[Node], inputConstraints: Constraints) = {
+
+        // Prepare input constraints
+        //-------------------
+        var constraints = inputConstraints
+        node match {
+          case constrainable: Constrainable ⇒ constraints = inputConstraints + constrainable.fixedConstraints
+          case _                            ⇒
+        }
+
+        //GridPane.setHgrow(node.base, Priority.NEVER)
+        //GridPane.setVgrow(node.base, Priority.NEVER)
+
+        // Resolve
+        //------------------
+        GridPane.setHgrow(node.base, Priority.NEVER)
+        constraints.foreach {
+
+          // Expand
+          //-----------------
+
+          case Constraint("expand", v) ⇒
+
+          	
+          
+            //VBox.setHgrow(node.base, Priority.ALWAYS)
+
+          case Constraint("expandWidth", v) ⇒
+
+            //HBox.setHgrow(node.base, Priority.ALWAYS)
+
+          case Constraint("margin",v) =>
+            
+            VBox.setMargin(node.base, new Insets(v.asInstanceOf[Double]))
+          
+          case c ⇒
+
+          //logWarn("[Unsupported Constraint] Constraint: " + c.name)
+          //println()
+        }
+
+      }
+
+    }
   }
 
   // Members declared in com.idyria.osi.vui.core.components.main.MainBuilder
@@ -307,6 +502,8 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
 
       //-- Create a Default Scene with Group
       this.setScene(new Scene(new Group))
+
+      //-- Per default close, don't hide
 
       // Members declared in com.idyria.osi.vui.core.components.scenegraph.SGGroup
       //-------------------
@@ -332,7 +529,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
       /**
        *    Remove scene content by setting an empty group
        */
-      def clear: Unit = {
+      override def clear: Unit = {
 
         this.sceneProperty().get() match {
           case null ⇒
@@ -342,12 +539,14 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
           }
         }
 
+        super.clear
+
       }
 
       /**
        * Does nothing
        */
-      def children: Seq[com.idyria.osi.vui.core.components.scenegraph.SGNode[javafx.stage.Stage]] = {
+      /* def children: Seq[com.idyria.osi.vui.core.components.scenegraph.SGNode[javafx.stage.Stage]] = {
         Nil
       }
 
@@ -356,7 +555,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
        */
       override def removeChild(c: com.idyria.osi.vui.core.components.scenegraph.SGNode[Stage]): Unit = {
 
-      }
+      }*/
 
       // Members declared in com.idyria.osi.vui.core.components.scenegraph.SGNode
       //-------------------
@@ -387,6 +586,23 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node] with JFXChartBuilde
 
       }
 
+      // Events
+      //---------------------
+
+      /**
+       * When the Window gets closed
+       */
+      override def onClose(cl: => Unit) = {
+
+        this.setOnCloseRequest(new EventHandler[WindowEvent] {
+          def handle(e: WindowEvent) = {
+
+            cl
+          }
+        })
+
+      }
+
     }.asInstanceOf[VuiFrame[javafx.scene.Node]]
 
   }
@@ -409,4 +625,4 @@ trait CSS3ConstraintsResolver {
   }
 
 }
-
+ 

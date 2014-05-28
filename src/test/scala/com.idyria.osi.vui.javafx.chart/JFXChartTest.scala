@@ -5,10 +5,24 @@ import com.idyria.osi.vui.core.VBuilder
 import com.idyria.osi.vui.lib.gridbuilder.GridBuilder
 import com.idyria.osi.vui.lib.chart.DatasetsBuilder
 import com.idyria.osi.vui.lib.chart.ChartBuilder
-import com.idyria.osi.vui.javafx.JavaFXRun
+import com.idyria.osi.ooxoo.core.buffers.structural.io.sax.StAXIOBuffer
+import com.idyria.osi.vui.lib.chart.TimeValuesDataset
+import com.idyria.osi.tea.logging.TLog
+import com.idyria.osi.ooxoo.core.buffers.structural.VerticalBuffer
 
-object JFXChartTest extends App with GridBuilder with DatasetsBuilder with ChartBuilder {
+object JFXChartTest extends App with GridBuilder with DatasetsBuilder  {
 
+  var fromXML = """<?xml version="1.0" ?>
+    <TimeValuesDataset name="TestXML" startTime="1390410600623" xType="scala.Long" yType="scala.Long">
+    <Value x="1">0</Value><Value x="101">1</Value>
+    
+    <Value x="201">2</Value>
+    </TimeValuesDataset>"""
+  
+    //TLog.setLevel(classOf[VerticalBuffer], TLog.Level.FULL)
+    //TLog.setLevel(classOf[StAXIOBuffer], TLog.Level.FULL)
+    
+  
   // Prepare Dataset
   //---------------
   var ds = timeDataset[Double]("test")
@@ -42,6 +56,27 @@ object JFXChartTest extends App with GridBuilder with DatasetsBuilder with Chart
               c ⇒ c.addDataSet(ds)
             }
           }
+          
+          "second" row {
+            
+            lineChart {
+              c  => 
+                
+                // Parse
+                var io = StAXIOBuffer(fromXML)
+                var tds = new TimeValuesDataset[Long]()
+                tds.appendBuffer(io)
+                io.streamIn
+                
+                println(s"Done Dataset: "+tds.values.size)
+                tds.values.foreach {
+                  tuple => 
+                    println(s"--> "+tuple.x+":"+tuple.y)
+                }
+                
+                c.addDataSet(tds)
+            }
+          }
 
         }
 
@@ -53,7 +88,7 @@ object JFXChartTest extends App with GridBuilder with DatasetsBuilder with Chart
   
   // Open a Thread to add values
   //------------------
-  var t = new Thread(new Runnable {
+  /*var t = new Thread(new Runnable {
     
     
     def run = {
@@ -69,6 +104,6 @@ object JFXChartTest extends App with GridBuilder with DatasetsBuilder with Chart
     }
   })
   t.setDaemon(true)
-  t.start
+  t.start*/
 
 }

@@ -12,11 +12,12 @@ import scala.collection.JavaConversions
 import javafx.event.EventHandler
 import javafx.scene.Parent
 import javafx.scene.layout.Pane
-
-
-
+import javafx.scene.input.KeyEvent
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
+ 
 class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node] {
-
+ 
   //---------------------------------------
   // Node
   //---------------------------------------
@@ -35,10 +36,15 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
     case _        =>
   }
 
-  def clear = delegate match {
-    case g: Group => g.getChildren().clear()
-    case p: Pane => p.getChildren().clear()
-    case _        =>
+  def clear : Unit = {
+    
+    delegate match {
+      case g: Group => g.getChildren().clear();
+      case p: Pane  => p.getChildren().clear()
+      case _        =>
+
+    }
+    
   }
 
   /**
@@ -52,26 +58,26 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
   /**
    * Do not return anything
    */
-  def children: Seq[SGNode[Node]] = delegate match {
+  /* def children: Seq[SGNode[Node]] = delegate match {
     case g: Group => g.getChildren().toArray().map(c => new JavaFXNodeDelegate[Node](c.asInstanceOf[Node]))
     case _        => Nil
-  }
+  }*/
 
   //---------------------------------------
   // General
   //---------------------------------------
-  
+
   //-- Enable / Disable
-  
+
   override def disable = delegate.setDisable(true)
   override def enable = delegate.setDisable(false)
 
   //-- Visibility
-  override def setVisible(state: Boolean) : Unit = {
+  override def setVisible(state: Boolean): Unit = {
     delegate.setVisible(state)
-    
+
   }
-  
+
   //---------------------------------------
   // Actions
   //---------------------------------------
@@ -105,14 +111,13 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
   }
 
   override def onClicked(action: VUIClickEvent => Any) = {
-	  
+
     delegate.setOnMouseClicked(new EventHandler[MouseEvent] {
-    	def handle(event: MouseEvent) = {
-    	  action(event)
-    	}
+      def handle(event: MouseEvent) = {
+        action(event)
+      }
     })
-    
-    
+
   } /*delegate.addMouseListener(new MouseAdapter() {
    
     /*override def mouseClicked(e: MouseEvent) = SwingUtilities.invokeLater(new Runnable {
@@ -129,6 +134,12 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
     var wrapper: (() => Unit) = {
       () => action
     }
+    
+    delegate.parentProperty().addListener(new ChangeListener[Parent] {
+      def changed(b: ObservableValue[_ <: Parent] , old:Parent,n:Parent) = {
+        action
+      }
+    })
 
     /* delegate.addComponentListener(new ComponentAdapter() {
 
@@ -149,6 +160,26 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
     })*/
 
   }
+  
+  //------------------------
+  // Keyboard
+  //------------------------
+  override def onKeyPressed(cl: Char => Unit) = {
+    this.delegate.setOnKeyPressed(new EventHandler[KeyEvent]{
+      def handle(e:KeyEvent) = {
+        cl(e.getCharacter().charAt(0))
+      } 
+    })
+  }
+  
+   override def onKeyTyped(cl: Char => Unit) = {
+    this.delegate.setOnKeyTyped(new EventHandler[KeyEvent]{
+      def handle(e:KeyEvent) = {
+        cl(e.getCharacter().charAt(0))
+      } 
+    })
+  }
+  
 
   //---------------------------------------
   // Positioning
