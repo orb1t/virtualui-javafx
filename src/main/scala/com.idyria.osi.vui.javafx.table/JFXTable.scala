@@ -166,7 +166,7 @@ trait JFXTableBuilder extends TableBuilderInterface[Node] {
           //-- Look for content of table
           //this.delegate.
           //this.delegate.getChildrenUnmodifiable().get(0).get
-          this.delegate.setPrefHeight(this.delegate.getItems().size()*24+30)
+          this.delegate.setPrefHeight(this.delegate.getItems().size()*24+30+20)
 
       }
       
