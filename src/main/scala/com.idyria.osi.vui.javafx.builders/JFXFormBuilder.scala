@@ -22,6 +22,9 @@ import com.idyria.osi.vui.core.components.controls.ToggleGroup
 import javafx.scene.control.Toggle
 import com.idyria.osi.vui.core.VUIBuilder
 import com.idyria.osi.vui.javafx.JavaFXRun
+import scala.collection.JavaConversions._
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 
 trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterface[Node] {
 
@@ -62,7 +65,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
 
       // Events
       //--------------
-      
+
       /**
        * React on Selection
        */
@@ -104,12 +107,12 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
         this.delegate.selectionModelProperty().get().select(obj)
 
       }
-      
+
       /**
        * React to user selection by updating selected in model
        */
       this.onSelected {
-        s : CT =>  model.selected = s
+        s: CT => model.selected = s
       }
 
     }
@@ -138,11 +141,12 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       // Events
       //--------------
 
-      def onSelected(cl: CT => Unit) = {
+      def onSelected(cl: Seq[CT] => Unit) = {
 
         this.delegate.selectionModelProperty().get().selectedItemProperty().addListener(new ChangeListener[CT] {
           def changed(obs: ObservableValue[_ <: CT], prev: CT, n: CT) = {
-            cl(n)
+
+            cl(delegate.selectionModelProperty().getValue().getSelectedItems())
           }
         })
         /*this.delegate.addItemListener(new ItemListener {
@@ -183,11 +187,9 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       // Model Support
       //------------
       this.model.onWith("model.insertText") {
-        str : String => JavaFXRun.onJavaFX({ (delegate.insertText(getText.length,str)) })
+        str: String => JavaFXRun.onJavaFX({ (delegate.insertText(getText.length, str)) })
       }
-      def textProperty = delegate.textProperty 
-      
-      
+      def textProperty = delegate.textProperty
 
     }
 
@@ -196,14 +198,12 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
 
     return new JavaFXNodeDelegate[TextField](new TextField) with VUIInputText[javafx.scene.Node] with JFXTextModelSupport {
 
-      
-       
       // Columns
       //--------------------
-      override def setColumns(c:Int) : Unit = {
-    	  this.delegate.setPrefColumnCount(c)
+      override def setColumns(c: Int): Unit = {
+        this.delegate.setPrefColumnCount(c)
       }
-      
+
       // Text
       //-------------
       override def setText(str: String) = delegate.setText(str)
@@ -212,6 +212,26 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       // Model Support
       //------------
       def textProperty = delegate.textProperty
+
+      // Special Listeners
+      //--------------------------
+      override def onEnterKey(cl: => Any) : Unit = {
+        
+        this.delegate.onActionProperty().set(new EventHandler[ActionEvent] {
+          
+          def handle(ev: ActionEvent) = {
+            cl
+          }
+        })
+        /*this.delegate.onActionProperty().addListener(new ChangeListener[EventHandler[ActionEvent]] {
+
+          def changed(obs: ObservableValue[_ <: ActionEvent], old: ActionEvent, newValue: ActionEvent): Unit = {
+           
+          }
+
+        })*/
+        
+      }
 
     }
 
@@ -241,81 +261,80 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       // State
       //--------------
       def isChecked = {
-        
-         this.delegate.getToggleGroup() match {
-          case null =>  this.delegate.isSelected()
-          case tg => tg.getSelectedToggle() == this.delegate
+
+        this.delegate.getToggleGroup() match {
+          case null => this.delegate.isSelected()
+          case tg   => tg.getSelectedToggle() == this.delegate
         }
-        
+
       }
-      
-      def setChecked(b:Boolean) = {
-        
+
+      def setChecked(b: Boolean) = {
+
         this.delegate.getToggleGroup() match {
           case null => this.delegate.setSelected(true)
-          case tg => tg.selectToggle(this.delegate)
+          case tg   => tg.selectToggle(this.delegate)
         }
-        
+
       }
-     
-      
+
       // Text
       //-----------
       def setText(str: String) = {
         this.delegate.setText(str)
-      } 
+      }
       def getText = delegate.getText()
-      
+
       // ToggleGroup Support
       //----------------
       this.onWith("togglegroup") {
-        tg : ToggleGroup => 
+        tg: ToggleGroup =>
           this.delegate.setToggleGroup(tg.asInstanceOf[javafx.scene.control.ToggleGroup])
       }
-      
+
     }
 
   }
-  
-  def toggleGroup : ToggleGroup = {
+
+  def toggleGroup: ToggleGroup = {
     return new javafx.scene.control.ToggleGroup with ToggleGroup {
-      
+
       /**
-	   * Listener triggered when a selection changed in the group 
-	   */
-	  override def onSelected(cl: VUIRadioButton[_] => Unit) = {
-	   
-	    this.selectedToggleProperty().addListener(new ChangeListener[Toggle] {
-	      
-	      def changed(obs:ObservableValue[_ <: javafx.scene.control.Toggle],old:Toggle,newValue:Toggle):Unit = {
-	        buttons.find(b => b.base == newValue) match {
-	          case Some(newButton) => cl(newButton)
-	          case None => throw new RuntimeException("Selection change in toggle group, new value did not match any VUIRadiobutton with same underlying base")
-	        }
-	        //cl(this.buttons.fin)
-	      }
-	      
-	    })
-	    
-	  }
-	  
-	   /**
-	   * Listener triggered when a selection changed in the group 
-	   */
-	  override def onSelectedIndex(cl: Int => Unit) : Unit = {
-	     this.selectedToggleProperty().addListener(new ChangeListener[Toggle] {
-	      
-	      def changed(obs:ObservableValue[_ <: javafx.scene.control.Toggle],old:Toggle,newValue:Toggle):Unit = {
-	        buttons.find(b => b.base == newValue) match {
-	          case Some(newButton) => cl(buttons.indexOf(newButton))
-	          case None => throw new RuntimeException("Selection change in toggle group, new value did not match any VUIRadiobutton with same underlying base")
-	        }
-	        //cl(this.buttons.fin)
-	      }
-	      
-	    })
-	  }
-      
+       * Listener triggered when a selection changed in the group
+       */
+      override def onSelected(cl: VUIRadioButton[_] => Unit) = {
+
+        this.selectedToggleProperty().addListener(new ChangeListener[Toggle] {
+
+          def changed(obs: ObservableValue[_ <: javafx.scene.control.Toggle], old: Toggle, newValue: Toggle): Unit = {
+            buttons.find(b => b.base == newValue) match {
+              case Some(newButton) => cl(newButton)
+              case None            => throw new RuntimeException("Selection change in toggle group, new value did not match any VUIRadiobutton with same underlying base")
+            }
+            //cl(this.buttons.fin)
+          }
+
+        })
+
+      }
+
+      /**
+       * Listener triggered when a selection changed in the group
+       */
+      override def onSelectedIndex(cl: Int => Unit): Unit = {
+        this.selectedToggleProperty().addListener(new ChangeListener[Toggle] {
+
+          def changed(obs: ObservableValue[_ <: javafx.scene.control.Toggle], old: Toggle, newValue: Toggle): Unit = {
+            buttons.find(b => b.base == newValue) match {
+              case Some(newButton) => cl(buttons.indexOf(newButton))
+              case None            => throw new RuntimeException("Selection change in toggle group, new value did not match any VUIRadiobutton with same underlying base")
+            }
+            //cl(this.buttons.fin)
+          }
+
+        })
+      }
+
     }
   }
 
