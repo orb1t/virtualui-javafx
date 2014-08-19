@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane
 import javafx.scene.input.KeyEvent
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
+import scala.language.implicitConversions
  
 class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node] {
  
