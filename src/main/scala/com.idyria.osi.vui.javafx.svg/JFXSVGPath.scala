@@ -37,6 +37,9 @@ class JFXSVGPath(
   def setSVGPath(str: String): Unit = {
     path = str
     svgPath.setContent(path)
+    
+    
+   // println("Changing Content to "+path)
     repaint
   }
 
@@ -87,6 +90,7 @@ class JFXSVGPath(
     // Clear and Paint
     //----------------
     var g2 = this.delegate.getGraphicsContext2D()
+     g2.save
     g2.clearRect(0, 0, this.delegate.getWidth(), this.delegate.getHeight())
     
     // Paint path
@@ -96,7 +100,7 @@ class JFXSVGPath(
     g2.setLineWidth(1)
 
     g2.beginPath()
-    //g2.moveTo(-1,-1)
+   // g2.moveTo(0,0)
 
     //-- scale
     g2.scale(scaleX, scaleY)
@@ -108,6 +112,7 @@ class JFXSVGPath(
 
     g2.fill
     g2.closePath
+    g2.restore
 
   }
 
