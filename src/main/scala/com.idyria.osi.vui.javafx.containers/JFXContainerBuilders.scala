@@ -126,7 +126,7 @@ trait JFXScrollPaneInterface extends ScrollPaneBuilderInterface[Node] {
       //-----------------
       var pane = new Pane
       //this.delegate.setContent(pane)
-      this.delegate.fitToHeightProperty().set(true)
+      this.delegate.fitToHeightProperty().set(false)
       this.delegate.fitToWidthProperty().set(true)
       /*this.delegate.fitToHeightProperty().set(true)
       this.delegate.fitToWidthProperty().set(true)

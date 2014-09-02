@@ -156,7 +156,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
       override def click = {
         this.delegate.fire
-        this.delegate.fireEvent(new ActionEvent(null, this.delegate))
+        //this.delegate.fireEvent(new ActionEvent(null, this.delegate))
       }
 
     }
@@ -416,7 +416,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
         // Resolve
         //------------------
-        GridPane.setHgrow(node.base, Priority.NEVER)
+        GridPane.setVgrow(node.base, Priority.NEVER)
         constraints.foreach {
 
           // Expand
@@ -425,10 +425,13 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
           case Constraint("expand", v) ⇒
 
             HBox.setHgrow(node.base, Priority.ALWAYS)
-
+            GridPane.setHgrow(node.base, Priority.ALWAYS)
+           
           case Constraint("expandWidth", v) ⇒
 
+            println(s"HBOX HGROW for: "+node.base)
             HBox.setHgrow(node.base, Priority.ALWAYS)
+            GridPane.setHgrow(node.base, Priority.ALWAYS)
 
           case c ⇒
 
