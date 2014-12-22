@@ -507,7 +507,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
       this.setScene(new Scene(new Group))
 
       //-- Per default close, don't hide
-
+      
       // Members declared in com.idyria.osi.vui.core.components.scenegraph.SGGroup
       //-------------------
 
@@ -589,6 +589,10 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
       }
 
+      override def close () = {
+        super.close
+      }
+      
       // Events
       //---------------------
 
