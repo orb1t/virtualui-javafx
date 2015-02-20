@@ -83,7 +83,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
   // Utils
   //------------
   override def onUIThread(cl: => Unit) {
-
+      
     JavaFXRun.onJavaFX({ cl })
 
   }
@@ -244,7 +244,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
       // Text
       //----------
-      def setText(str: String) = this.delegate.setText(str)
+      def setText(str: String) = onUIThread(this.delegate.setText(str))
       def getText = delegate.getText
 
     }
@@ -254,7 +254,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
       // Text
       //----------
-      def setText(str: String) = this.delegate.setText(str)
+      def setText(str: String) = onUIThread(this.delegate.setText(str))
       def getText = delegate.getText
 
     }
@@ -590,7 +590,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
       }
 
       override def close () = {
-        super.close
+        onUIThread(super.close)
       }
       
       // Events

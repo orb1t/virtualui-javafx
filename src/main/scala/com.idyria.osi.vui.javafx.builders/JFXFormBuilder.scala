@@ -1,30 +1,30 @@
 package com.idyria.osi.vui.javafx.builders
 
+import scala.collection.JavaConversions._
+import com.idyria.osi.vui.core.components.controls.ToggleGroup
+import com.idyria.osi.vui.core.components.controls.VUIRadioButton
 import com.idyria.osi.vui.core.components.form.FormBuilderInterface
-import com.idyria.osi.vui.javafx.model.JFXTextModelSupport
-import com.idyria.osi.vui.javafx.JavaFXNodeDelegate
+import com.idyria.osi.vui.core.components.form.ListBuilderInterface
 import com.idyria.osi.vui.core.components.form.VUIInputText
 import com.idyria.osi.vui.core.components.model.ComboBoxModel
 import com.idyria.osi.vui.core.components.model.DefaultComboBoxModel
 import com.idyria.osi.vui.core.components.model.ListModel
-import javafx.scene.control.ListView
-import javafx.scene.control.TextArea
-import javafx.scene.control.TextField
-import javafx.scene.control.ComboBox
+import com.idyria.osi.vui.javafx.JavaFXNodeDelegate
+import com.idyria.osi.vui.javafx.JavaFXRun
+import com.idyria.osi.vui.javafx.model.JFXTextModelSupport
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
-import com.idyria.osi.vui.core.components.form.ListBuilderInterface
-import javafx.scene.Node
-import com.idyria.osi.vui.core.components.controls.VUIRadioButton
-import javafx.scene.control.CheckBox
-import javafx.scene.control.RadioButton
-import com.idyria.osi.vui.core.components.controls.ToggleGroup
-import javafx.scene.control.Toggle
-import com.idyria.osi.vui.core.VUIBuilder
-import com.idyria.osi.vui.javafx.JavaFXRun
-import scala.collection.JavaConversions._
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
+import javafx.scene.Node
+import javafx.scene.control.CheckBox
+import javafx.scene.control.ComboBox
+import javafx.scene.control.ListView
+import javafx.scene.control.RadioButton
+import javafx.scene.control.TextArea
+import javafx.scene.control.TextField
+import javafx.scene.control.Toggle
+import com.idyria.osi.vui.javafx.listeners.FXChangeListeners
 
 trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterface[Node] {
 
@@ -244,6 +244,19 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       //--------------
       def isChecked = this.delegate.isSelected()
 
+      this.checkedProperty.onUpdated {
+          case v : Boolean =>  this.delegate.selectedProperty().setValue(v)
+      }
+      
+      this.delegate.selectedProperty().addListener(FXChangeListeners.closureToChange { value : java.lang.Boolean => checkedProperty.set(value) }) 
+     
+      /*this.delegate.selectedProperty().addListener(new ChangeListener[java.lang.Boolean] {
+          def changed(o : ObservableValue[_ <: java.lang.Boolean] , old : java.lang.Boolean, newVal : java.lang.Boolean) = {
+              println(s"JFX Changed property to : $newVal")
+              checkedProperty.set(newVal)
+          }
+      })*/
+      
       // Text
       //-----------
       def setText(str: String) = {

@@ -1,5 +1,6 @@
 .table-row-cell:empty {
     -fx-background-color: lightyellow;
+	-fx-height:0px;
     -fx-visibility: hidden;
     visibility: hidden;
     -fx-cursor: hand;
@@ -8,6 +9,7 @@
   
 .table-row-cell:empty .table-cell {
     -fx-border-width: 0px;
+-fx-height:0px;
     -fx-visibility: hidden;
     visibility: hidden;
     -fx-display: none;
