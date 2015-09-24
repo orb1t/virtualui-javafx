@@ -12,6 +12,47 @@
 		<version>2.11.7.r1</version>
 	</parent>
 
+	<build>
+		<plugins>
+
+			<!-- Licenses -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>1.6</version>
+				<configuration>
+					<licenseName>gpl_v3</licenseName>
+					<extraExtensions>
+						<scala>java</scala>
+					</extraExtensions>
+				</configuration>
+			</plugin>
+			<!-- Site -->
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.12</version>
+				<configuration>
+					<message>Creating site for ${project.version}</message>
+					<repositoryName>wsb-webapp</repositoryName>
+					<repositoryOwner>richnou</repositoryOwner>
+					<path>maven/${project.version}</path>
+					<merge>true</merge>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site</phase>
+					</execution>
+				</executions>
+			</plugin>
+
+
+		</plugins>
+	</build>
+
 	<!-- Repositories to find packages -->
 	<!-- ############################################## -->
 	<pluginRepositories>
