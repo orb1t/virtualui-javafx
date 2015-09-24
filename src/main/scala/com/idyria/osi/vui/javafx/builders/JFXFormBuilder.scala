@@ -1,8 +1,12 @@
 package com.idyria.osi.vui.javafx.builders
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConversions.asScalaBuffer
+import com.idyria.osi.vui.core.components.controls.SliderBuilderInterface
+import com.idyria.osi.vui.core.components.controls.SpinnerBuilderInterface
 import com.idyria.osi.vui.core.components.controls.ToggleGroup
 import com.idyria.osi.vui.core.components.controls.VUIRadioButton
+import com.idyria.osi.vui.core.components.controls.VUISlider
+import com.idyria.osi.vui.core.components.controls.VUISpinner
 import com.idyria.osi.vui.core.components.form.FormBuilderInterface
 import com.idyria.osi.vui.core.components.form.ListBuilderInterface
 import com.idyria.osi.vui.core.components.form.VUIInputText
@@ -11,6 +15,7 @@ import com.idyria.osi.vui.core.components.model.DefaultComboBoxModel
 import com.idyria.osi.vui.core.components.model.ListModel
 import com.idyria.osi.vui.javafx.JavaFXNodeDelegate
 import com.idyria.osi.vui.javafx.JavaFXRun
+import com.idyria.osi.vui.javafx.listeners.FXChangeListeners
 import com.idyria.osi.vui.javafx.model.JFXTextModelSupport
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
@@ -21,12 +26,16 @@ import javafx.scene.control.CheckBox
 import javafx.scene.control.ComboBox
 import javafx.scene.control.ListView
 import javafx.scene.control.RadioButton
+import javafx.scene.control.Slider
+import javafx.scene.control.Spinner
+import javafx.scene.control.SpinnerValueFactory
 import javafx.scene.control.TextArea
 import javafx.scene.control.TextField
 import javafx.scene.control.Toggle
-import com.idyria.osi.vui.javafx.listeners.FXChangeListeners
+import com.idyria.osi.vui.core.VBuilder
+import com.idyria.osi.vui.core.ErrorSupportTrait
 
-trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterface[Node] {
+trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterface[Node] with SliderBuilderInterface[Node] with SpinnerBuilderInterface[Node] with ErrorSupportTrait {
 
   def comboBox[CT]: com.idyria.osi.vui.core.components.form.VUIComboBox[CT, javafx.scene.Node] = {
     return new JavaFXNodeDelegate[ComboBox[CT]](new ComboBox) with com.idyria.osi.vui.core.components.form.VUIComboBox[CT, javafx.scene.Node] {
@@ -215,12 +224,12 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
 
       // Special Listeners
       //--------------------------
-      override def onEnterKey(cl: => Any) : Unit = {
-        
+      override def onEnterKey(cl: => Any): Unit = {
+
         this.delegate.onActionProperty().set(new EventHandler[ActionEvent] {
-          
+
           def handle(ev: ActionEvent) = {
-            cl
+            catchError(cl)
           }
         })
         /*this.delegate.onActionProperty().addListener(new ChangeListener[EventHandler[ActionEvent]] {
@@ -230,7 +239,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
           }
 
         })*/
-        
+
       }
 
     }
@@ -245,18 +254,18 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       def isChecked = this.delegate.isSelected()
 
       this.checkedProperty.onUpdated {
-          case v : Boolean =>  this.delegate.selectedProperty().setValue(v)
+        case v: Boolean => this.delegate.selectedProperty().setValue(v)
       }
-      
-      this.delegate.selectedProperty().addListener(FXChangeListeners.closureToChange { value : java.lang.Boolean => checkedProperty.set(value) }) 
-     
+
+      this.delegate.selectedProperty().addListener(FXChangeListeners.closureToChange { value: java.lang.Boolean => checkedProperty.set(value) })
+
       /*this.delegate.selectedProperty().addListener(new ChangeListener[java.lang.Boolean] {
           def changed(o : ObservableValue[_ <: java.lang.Boolean] , old : java.lang.Boolean, newVal : java.lang.Boolean) = {
               println(s"JFX Changed property to : $newVal")
               checkedProperty.set(newVal)
           }
       })*/
-      
+
       // Text
       //-----------
       def setText(str: String) = {
@@ -277,7 +286,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
 
         this.delegate.getToggleGroup() match {
           case null => this.delegate.isSelected()
-          case tg   => tg.getSelectedToggle() == this.delegate
+          case tg => tg.getSelectedToggle() == this.delegate
         }
 
       }
@@ -286,7 +295,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
 
         this.delegate.getToggleGroup() match {
           case null => this.delegate.setSelected(true)
-          case tg   => tg.selectToggle(this.delegate)
+          case tg => tg.selectToggle(this.delegate)
         }
 
       }
@@ -322,7 +331,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
           def changed(obs: ObservableValue[_ <: javafx.scene.control.Toggle], old: Toggle, newValue: Toggle): Unit = {
             buttons.find(b => b.base == newValue) match {
               case Some(newButton) => cl(newButton)
-              case None            => throw new RuntimeException("Selection change in toggle group, new value did not match any VUIRadiobutton with same underlying base")
+              case None => throw new RuntimeException("Selection change in toggle group, new value did not match any VUIRadiobutton with same underlying base")
             }
             //cl(this.buttons.fin)
           }
@@ -340,7 +349,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
           def changed(obs: ObservableValue[_ <: javafx.scene.control.Toggle], old: Toggle, newValue: Toggle): Unit = {
             buttons.find(b => b.base == newValue) match {
               case Some(newButton) => cl(buttons.indexOf(newButton))
-              case None            => throw new RuntimeException("Selection change in toggle group, new value did not match any VUIRadiobutton with same underlying base")
+              case None => throw new RuntimeException("Selection change in toggle group, new value did not match any VUIRadiobutton with same underlying base")
             }
             //cl(this.buttons.fin)
           }
@@ -351,4 +360,107 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
     }
   }
 
+  /**
+   * Slider
+   */
+  def slider: VUISlider[Node] = {
+    return new JavaFXNodeDelegate(new Slider) with VUISlider[Node] {
+
+      //base.setSnapToTicks(true)
+      def setMin(min: Double) = {
+        base.setMin(min)
+      }
+      def setMax(max: Double) = {
+        base.setMax(max)
+      }
+
+      def setShowTickLabel(show: Boolean) = {
+        base.setShowTickLabels(show)
+      }
+      def setShowTickMarks(show: Boolean) = {
+        base.setShowTickMarks(show)
+      }
+      def setMajorTickUnit(u: Double) = {
+        base.setMajorTickUnit(u)
+      }
+      def setMinorTickCount(u: Int) = {
+        base.setMinorTickCount(u)
+      }
+      def setBlockIncrement(u: Double) = {
+        base.setBlockIncrement(u)
+      }
+
+      // Value
+      //-----------------
+      def setValue(v: Double) = {
+        base.setValue(v)
+      }
+
+      def onChange(cl: (Double => Unit)) = {
+        base.valueProperty().addListener(new ChangeListener[Number] {
+
+          def changed(obs: ObservableValue[_ <: Number], old: Number, newValue: Number): Unit = {
+            //println(s"New Value:"+newValue.doubleValue)
+            //onUIThread(cl(newValue.doubleValue))
+            cl(newValue.doubleValue())
+
+          }
+
+        })
+      }
+
+    }
+  }
+
+  /**
+   * Slider
+   */
+  def spinner: VUISpinner[Node] = {
+    return new JavaFXNodeDelegate(new Spinner[Double](0.0, 0.0, 0.0)) with VUISpinner[Node] {
+
+      //base.setEditable(true)
+      
+      //base.setSnapToTicks(true)
+      def setMin(min: Double) = {
+        base.getValueFactory.asInstanceOf[SpinnerValueFactory.DoubleSpinnerValueFactory].setMin(min)
+      }
+      def setMax(max: Double) = {
+        base.getValueFactory.asInstanceOf[SpinnerValueFactory.DoubleSpinnerValueFactory].setMax(max)
+      }
+      def setStep(step: Double) = {
+        base.getValueFactory.asInstanceOf[SpinnerValueFactory.DoubleSpinnerValueFactory].setAmountToStepBy(step)
+      }
+
+      // Value
+      //-----------------
+      def setValue(v: Double) = {
+        base.getValueFactory.setValue(v.toInt)
+        
+      }
+
+      def getValue: Double = {
+        base.getValue.toDouble
+      }
+
+      def onChange(cl: (Double => Unit)) = {
+        base.valueProperty().addListener(new ChangeListener[Double] {
+
+          def changed(obs: ObservableValue[_ <: Double], old: Double, newValue: Double): Unit = {
+            //println(s"New Value:"+newValue.doubleValue)
+            //onUIThread(cl(newValue.doubleValue))
+            cl(newValue.doubleValue())
+
+          }
+
+        })
+      }
+
+      // Editable
+      //------------------
+      def setEditable(v: Boolean) = {
+        base.editableProperty().setValue(v)
+      }
+
+    }
+  }
 }

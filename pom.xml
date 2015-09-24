@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>com.idyria.osi</groupId>
 		<artifactId>superpom-scala</artifactId>
-		<version>2.11.4.r1</version>
+		<version>2.11.7.r1</version>
 	</parent>
 
 	<!-- Repositories to find packages -->
@@ -84,7 +84,7 @@
 			<artifactId>jfxrt</artifactId>
 			<version>2.3</version>
 			<scope>system</scope>
-			<systemPath>${java.home}/lib/jfxrt.jar</systemPath>
+			<systemPath>${java.home}/lib/ext/jfxrt.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>

@@ -29,7 +29,15 @@ trait JFXChartBuilder extends ChartBuilderInterface[Node] with UtilsTrait {
   def lineChart: LineChart[Node] = {
 
     return new JavaFXNodeDelegate(new javafx.scene.chart.LineChart[Number, Number](new NumberAxis, new NumberAxis)) with LineChart[Node] {
-
+    
+     on("datasets.clean") {
+       
+       println(s"Remove all")
+       this.delegate.getData.removeAll()
+       this.delegate.getData.clear()
+       
+     }
+      
       onWith("dataset.added") {
         ds: XYDataset[_, _] =>
 
@@ -42,9 +50,9 @@ trait JFXChartBuilder extends ChartBuilderInterface[Node] with UtilsTrait {
           ds.values.foreach {
 
             v =>
-              onUIThread {
+              //onUIThread {
                 serie.getData.add(new XYChart.Data(v.value._1.asInstanceOf[Number], v.value._2.asInstanceOf[Number]))
-              }
+              //}
 
           }
 
@@ -52,9 +60,9 @@ trait JFXChartBuilder extends ChartBuilderInterface[Node] with UtilsTrait {
           //----------------
           ds.onWith("value.added") {
             v: ValueTuple[_, _] =>
-              onUIThread {
+              //onUIThread {
                 serie.getData.add(new XYChart.Data(v.value._1.asInstanceOf[Number], v.value._2.asInstanceOf[Number]))
-              }
+              //}
 
           }
 

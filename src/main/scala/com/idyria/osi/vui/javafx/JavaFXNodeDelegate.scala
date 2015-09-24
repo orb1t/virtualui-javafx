@@ -238,3 +238,15 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
   //override def toString = delegate.toString
 
 }
+
+object JavaFXNodeDelegate {
+  
+  
+  implicit def convertJFXNodeToSGNode(node: Node) : SGNode[_]= {
+    new JavaFXNodeDelegate(node)
+  }
+  
+  def apply(node: Node) = {
+    new JavaFXNodeDelegate(node)
+  } 
+}

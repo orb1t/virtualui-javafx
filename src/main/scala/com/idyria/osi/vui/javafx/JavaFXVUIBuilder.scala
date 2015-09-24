@@ -65,6 +65,8 @@ import com.idyria.osi.vui.javafx.JavaFXRun
 import com.idyria.osi.vui.core.VUIBuilder
 import javafx.event.ActionEvent
 import javafx.geometry.Insets
+import com.idyria.osi.vui.core.components.controls.TableTreeBuilder
+import com.idyria.osi.vui.javafx.table.JFXTableTree
 
 class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
     with JFXChartBuilder
@@ -75,15 +77,16 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
     with JFXTableBuilder
     with JFXTreeBuilder
     with JFXFormBuilder
+    with JFXControlsBuilder
     with ControlsBuilderInterface[Node]
     with ListBuilderInterface[Node]
-
+    with JFXTableTree
     with TLogSource {
 
   // Utils
   //------------
   override def onUIThread(cl: => Unit) {
-      
+
     JavaFXRun.onJavaFX({ cl })
 
   }
@@ -120,11 +123,11 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
       this.onMatch("layout.updated") {
 
         case p: javafx.scene.layout.Pane ⇒
-        
-        	/*this.delegate.getChildren()
+
+          /*this.delegate.getChildren()
           p.children.getChildren().add*/
-        p.getChildren().addAll(this.delegate.getChildren())
-        /*this.delegate.getChildren().foreach {
+          p.getChildren().addAll(this.delegate.getChildren())
+          /*this.delegate.getChildren().foreach {
           c => 
             
         }*/
@@ -244,7 +247,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
       // Text
       //----------
-      def setText(str: String) = onUIThread(this.delegate.setText(str))
+      def setText(str: String) = this.delegate.setText(str)
       def getText = delegate.getText
 
     }
@@ -295,35 +298,59 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
     new GridPane with com.idyria.osi.vui.core.components.layout.VUIGridLayout[javafx.scene.Node] {
 
-      this.setGridLinesVisible(false)
+      //this.setGridLinesVisible(true)
       this.setVgap(5.0)
       this.setHgap(5.0)
 
       override def applyConstraints(node: SGNode[Node], inputConstraints: Constraints) = {
 
-        // Prepare input constraints
+        // Prepare input constraints 
+        // FIXME? as Mutable List, in case some constraints are not properly ordered and need to be repushed at the end
         //-------------------
-        var constraints = inputConstraints
+        var constraints = inputConstraints       
         node match {
           case constrainable: Constrainable ⇒ constraints = inputConstraints + constrainable.fixedConstraints
-          case _                            ⇒
+          case _ ⇒
         }
 
         //GridPane.setHgrow(node.base, Priority.NEVER)
         //GridPane.setVgrow(node.base, Priority.NEVER)
 
+        // Placement Opt
+        //----------
+        //var rowOffset = 0
+        /*println(s"Doing "+node.base)
+        var cList : Seq[Constraint] = constraints
+        cList.foreach {
+          case c => println(s"Constraint: "+c.name)
+        }*/
+        
         // Resolve
         //------------------
         GridPane.setHgrow(node.base, Priority.NEVER)
         constraints.foreach {
 
+          // Row/Column Placement
+          //-----------------------
           case Constraint("column", c: Int) ⇒
 
             GridPane.setColumnIndex(node.base, c)
 
           case Constraint("row", r: Int) ⇒
-
+            //logInfo("[JFX] Pushing node " + node.base + " up one, actual pos:")
+            
+            //println("[JFX] Setting node row " + node.base + " to "+r)
+            
             GridPane.setRowIndex(node.base, r)
+
+          case Constraint("pushUp", r: Int) if (GridPane.getRowIndex(node.base) != null) ⇒
+            //println("[JFX] Pushing node " + node.base + s" up $r, actual pos: "+GridPane.getRowIndex(node.base))
+            GridPane.setRowIndex(node.base, GridPane.getRowIndex(node.base) - r-1)
+            //println(s"[JFX] -> now "+GridPane.getRowIndex(node.base))
+
+          case Constraint("pushUp", r: Int) =>
+            //println("[JFX] Pushing node " + node.base + " up one, but no index has been set")
+            //rowOffset -= r
 
           // Alignment
           //----------------
@@ -337,6 +364,14 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
           case Constraint("align", "top-right") ⇒
             GridPane.setHalignment(node.base, javafx.geometry.HPos.RIGHT)
+            GridPane.setValignment(node.base, javafx.geometry.VPos.TOP)
+
+          case Constraint("align", "top") ⇒
+            GridPane.setHalignment(node.base, javafx.geometry.HPos.CENTER)
+            GridPane.setValignment(node.base, javafx.geometry.VPos.TOP)
+
+          case Constraint("align", "top-left") ⇒
+            GridPane.setHalignment(node.base, javafx.geometry.HPos.LEFT)
             GridPane.setValignment(node.base, javafx.geometry.VPos.TOP)
 
           case Constraint("align", "bottom-right") ⇒
@@ -353,6 +388,12 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
           case Constraint("align", "bottom-left") ⇒
             GridPane.setHalignment(node.base, javafx.geometry.HPos.LEFT)
+            GridPane.setValignment(node.base, javafx.geometry.VPos.BOTTOM)
+          case Constraint("align", "bottom") ⇒
+            GridPane.setHalignment(node.base, javafx.geometry.HPos.CENTER)
+            GridPane.setValignment(node.base, javafx.geometry.VPos.BOTTOM)
+          case Constraint("align", "bottom-right") ⇒
+            GridPane.setHalignment(node.base, javafx.geometry.HPos.RIGHT)
             GridPane.setValignment(node.base, javafx.geometry.VPos.BOTTOM)
 
           // Expand
@@ -383,7 +424,10 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
           //GridPane.setRowSpan(node.base, GridPane.REMAINING)
 
           case Constraint("rowspan", v) ⇒
+            
+            //println("[JFX] Setting row span " + node.base + " to "+v)
             GridPane.setRowSpan(node.base, v.asInstanceOf[Int])
+            
           case Constraint("colspan", v) ⇒
 
             //println("Setting colspan on: " + node.base+" => "+v)
@@ -408,7 +452,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
         var constraints = inputConstraints
         node match {
           case constrainable: Constrainable ⇒ constraints = inputConstraints + constrainable.fixedConstraints
-          case _                            ⇒
+          case _ ⇒
         }
 
         //GridPane.setHgrow(node.base, Priority.NEVER)
@@ -426,10 +470,10 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
             HBox.setHgrow(node.base, Priority.ALWAYS)
             GridPane.setHgrow(node.base, Priority.ALWAYS)
-           
+
           case Constraint("expandWidth", v) ⇒
 
-            println(s"HBOX HGROW for: "+node.base)
+            println(s"HBOX HGROW for: " + node.base)
             HBox.setHgrow(node.base, Priority.ALWAYS)
             GridPane.setHgrow(node.base, Priority.ALWAYS)
 
@@ -456,7 +500,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
         var constraints = inputConstraints
         node match {
           case constrainable: Constrainable ⇒ constraints = inputConstraints + constrainable.fixedConstraints
-          case _                            ⇒
+          case _ ⇒
         }
 
         //GridPane.setHgrow(node.base, Priority.NEVER)
@@ -472,18 +516,16 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
           case Constraint("expand", v) ⇒
 
-          	
-          
-            //VBox.setHgrow(node.base, Priority.ALWAYS)
+          //VBox.setHgrow(node.base, Priority.ALWAYS)
 
           case Constraint("expandWidth", v) ⇒
 
-            //HBox.setHgrow(node.base, Priority.ALWAYS)
+          //HBox.setHgrow(node.base, Priority.ALWAYS)
 
-          case Constraint("margin",v) =>
-            
+          case Constraint("margin", v) =>
+
             VBox.setMargin(node.base, new Insets(v.asInstanceOf[Double]))
-          
+
           case c ⇒
 
           //logWarn("[Unsupported Constraint] Constraint: " + c.name)
@@ -507,7 +549,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
       this.setScene(new Scene(new Group))
 
       //-- Per default close, don't hide
-      
+
       // Members declared in com.idyria.osi.vui.core.components.scenegraph.SGGroup
       //-------------------
 
@@ -538,7 +580,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
           case null ⇒
           case scene ⇒ scene.getRoot() match {
             case g: Group ⇒ g.getChildren().clear()
-            case _        ⇒
+            case _ ⇒
           }
         }
 
@@ -589,10 +631,14 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
       }
 
-      override def close () = {
+      override def close() = {
         onUIThread(super.close)
       }
-      
+
+      /* override def show() = {
+          onUIThread(super.show())
+      }*/
+
       // Events
       //---------------------
 

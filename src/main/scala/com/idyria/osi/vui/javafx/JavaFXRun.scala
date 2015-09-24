@@ -22,7 +22,7 @@ class JavaFXRun extends Application {
         VUIBuilder.setImplementationForCurrentThread(new JavaFXVuiBuilder)
 
         JavaFXRun.semaphore.release
-        
+
         //stage.show()
     }
 
@@ -37,17 +37,20 @@ object JavaFXRun {
     VUIBuilder.setImplementationForCurrentThread(new JavaFXVuiBuilder)
     VUIBuilder.defaultImplementation = new JavaFXVuiBuilder
 
-    def onJavaFX(cl: ⇒ Unit) = {
+    def onJavaFX[T](cl: ⇒ T): Option[T] = {
 
         started match {
             case true ⇒
 
+                var r: Option[T] = None
                 Platform.runLater(new Runnable() {
                     def run = {
-                        try { cl } finally { semaphore.release }
+                        try { r = Some(cl) } finally { semaphore.release }
 
                     }
                 })
+                semaphore.acquire()
+                r
 
             // No grants in semaphore, start application
             case false ⇒
@@ -64,30 +67,31 @@ object JavaFXRun {
         // Wait started
         semaphore.acquire()*/
 
+                // Our Main app does release a credit in the semaphore
                 var fxThread = new Thread(new Runnable() {
                     def run = {
 
-                        try { Application.launch(classOf[JavaFXRun]) } finally {  }
+                        try { Application.launch(classOf[JavaFXRun]) } finally {}
 
                     }
                 })
                 fxThread.start()
-                
+
                 semaphore.acquire()
-    
+
                 started = true;
+                var r: Option[T] = None
                 Platform.runLater(new Runnable {
 
                     def run = {
-                        try { cl } finally { semaphore.release }
+                        try { r = Some(cl) } finally { semaphore.release }
                     }
                 })
                 // Acquire a semaphore to wait for the end of execution
                 semaphore.acquire()
+                r
 
         }
-
-        
 
         /* // Check Java FX has been started
     //----------
@@ -135,4 +139,13 @@ object JavaFXRun {
 
     }
 
+}
+
+trait VUIJavaFX {
+    def onJavaFX[T](cl: => T): T = {
+        JavaFXRun.onJavaFX {
+            cl
+        }.get
+
+    }
 }

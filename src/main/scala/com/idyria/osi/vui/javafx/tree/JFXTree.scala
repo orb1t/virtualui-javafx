@@ -16,9 +16,9 @@ import com.idyria.osi.vui.core.components.controls.DataTreeNode
 
 trait JFXTreeBuilder extends TreeBuilderInterface[Node] {
 
-  def tree: VUITree[Node] = {
+  def tree[CT <: TreeNode]: VUITree[CT,Node] = {
 
-    return new JavaFXNodeDelegate[TreeView[Any]](new TreeView[Any]) with VUITree[Node] {
+    return new JavaFXNodeDelegate[TreeView[Any]](new TreeView[Any]) with VUITree[CT,Node] {
 
       // Root Add
       //-------------
@@ -47,7 +47,7 @@ import scala.collection.JavaConversions._
 /**
  * Wrapper around tree node model, to react and update the item
  */
-class TreeNodeTreeItem(var treeNode: TreeNode, var tree: VUITree[Node]) extends TreeItem[Any] {
+class TreeNodeTreeItem(var treeNode: TreeNode, var tree: VUITree[_ <: TreeNode,Node]) extends TreeItem[Any] {
 
   this.setValue(treeNode)
 
@@ -109,6 +109,12 @@ class TreeNodeTreeItem(var treeNode: TreeNode, var tree: VUITree[Node]) extends 
       var item = new TreeNodeTreeItem(nd, tree)
       this.getChildren().add(item)
 
+  }
+  
+  // Expand 
+  //-------------------
+  this.treeNode.on("expand"){
+    this.setExpanded(true)
   }
 
 }
