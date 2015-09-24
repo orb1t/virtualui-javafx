@@ -15,6 +15,7 @@
 	<build>
 		<plugins>
 
+
 			<!-- Licenses -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -49,6 +50,14 @@
 				</executions>
 			</plugin>
 
+			<plugin>
+				<groupId>com.zenjava</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>2.0</version>
+				<!-- <configuration> -->
+				<!-- <mainClass>[put your application main class here]</mainClass> -->
+				<!-- </configuration> -->
+			</plugin>
 
 		</plugins>
 	</build>
@@ -119,13 +128,6 @@
 			<groupId>com.idyria.osi.vui</groupId>
 			<artifactId>vui-core</artifactId>
 			<version>1.1.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>javafx</groupId>
-			<artifactId>jfxrt</artifactId>
-			<version>2.3</version>
-			<scope>system</scope>
-			<systemPath>${java.home}/lib/ext/jfxrt.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>
