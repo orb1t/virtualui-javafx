@@ -1,0 +1,1684 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>JFXSVGPath - JavaFX Layer for VUI 1.1.1-SNAPSHOT API - com.idyria.osi.vui.javafx.svg.JFXSVGPath</title>
+          <meta name="description" content="JFXSVGPath - JavaFX Layer for VUI 1.1.1 - SNAPSHOT API - com.idyria.osi.vui.javafx.svg.JFXSVGPath" />
+          <meta name="keywords" content="JFXSVGPath JavaFX Layer for VUI 1.1.1 SNAPSHOT API com.idyria.osi.vui.javafx.svg.JFXSVGPath" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../../index.html';
+            var hash = 'com.idyria.osi.vui.javafx.svg.JFXSVGPath';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img alt="Class" src="../../../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.idyria">idyria</a>.<a href="../../../package.html" class="extype" name="com.idyria.osi">osi</a>.<a href="../../package.html" class="extype" name="com.idyria.osi.vui">vui</a>.<a href="../package.html" class="extype" name="com.idyria.osi.vui.javafx">javafx</a>.<a href="package.html" class="extype" name="com.idyria.osi.vui.javafx.svg">svg</a></p>
+        <h1>JFXSVGPath</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="com.idyria.osi.vui.javafx.svg">package svg</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">JFXSVGPath</span><span class="result"> extends <a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a>[<span class="extype" name="javafx.scene.canvas.Canvas">Canvas</span>]</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a>[<span class="extype" name="javafx.scene.canvas.Canvas">Canvas</span>], <span class="extype" name="com.idyria.osi.vui.core.components.VUIComponent">VUIComponent</span>[<span class="extype" name="javafx.scene.Node">Node</span>], <span class="extype" name="com.idyria.osi.tea.thread.ThreadLanguage">ThreadLanguage</span>, <span class="extype" name="com.idyria.osi.vui.core.styling.ApplyTrait">ApplyTrait</span>, <span class="extype" name="com.idyria.osi.vui.core.components.scenegraph.SGNode">SGNode</span>[<span class="extype" name="javafx.scene.Node">Node</span>], <span class="extype" name="com.idyria.osi.vui.core.constraints.Constrainable">Constrainable</span>, <span class="extype" name="com.idyria.osi.vui.core.styling.CommonVUIElementTrait">CommonVUIElementTrait</span>, <span class="extype" name="com.idyria.osi.tea.listeners.ListeningSupport">ListeningSupport</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="com.idyria.osi.vui.javafx.svg.JFXSVGPath"><span>JFXSVGPath</span></li><li class="in" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate"><span>JavaFXNodeDelegate</span></li><li class="in" name="com.idyria.osi.vui.core.components.VUIComponent"><span>VUIComponent</span></li><li class="in" name="com.idyria.osi.tea.thread.ThreadLanguage"><span>ThreadLanguage</span></li><li class="in" name="com.idyria.osi.vui.core.styling.ApplyTrait"><span>ApplyTrait</span></li><li class="in" name="com.idyria.osi.vui.core.components.scenegraph.SGNode"><span>SGNode</span></li><li class="in" name="com.idyria.osi.vui.core.constraints.Constrainable"><span>Constrainable</span></li><li class="in" name="com.idyria.osi.vui.core.styling.CommonVUIElementTrait"><span>CommonVUIElementTrait</span></li><li class="in" name="com.idyria.osi.tea.listeners.ListeningSupport"><span>ListeningSupport</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(url:java.net.URL):com.idyria.osi.vui.javafx.svg.JFXSVGPath"></a>
+      <a id="&lt;init&gt;:JFXSVGPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">JFXSVGPath</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@&lt;init&gt;(url:java.net.URL):com.idyria.osi.vui.javafx.svg.JFXSVGPath" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(path:String):com.idyria.osi.vui.javafx.svg.JFXSVGPath"></a>
+      <a id="&lt;init&gt;:JFXSVGPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">JFXSVGPath</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@&lt;init&gt;(path:String):com.idyria.osi.vui.javafx.svg.JFXSVGPath" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.idyria.osi.vui.core.styling.CommonVUIElementTrait.Self" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="Self&lt;:com.idyria.osi.vui.core.styling.CommonVUIElementTrait"></a>
+      <a id="Self:Self"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Self</span><span class="result"> &lt;: <span class="extype" name="com.idyria.osi.vui.core.styling.CommonVUIElementTrait">CommonVUIElementTrait</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@Self&lt;:com.idyria.osi.vui.core.styling.CommonVUIElementTrait" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CommonVUIElementTrait</dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.listeners.ListeningSupport#@-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="@-&gt;[T](point:String,input:T):Unit"></a>
+      <a id="@-&gt;[T](String,T):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $at$minus$greater" class="name">@-&gt;</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="point">point: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="input">input: <span class="extype" name="com.idyria.osi.tea.listeners.ListeningSupport.@-&gt;.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@@-&gt;[T](point:String,input:T):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ListeningSupport</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.listeners.ListeningSupport#@-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="@-&gt;[T](point:String):Unit"></a>
+      <a id="@-&gt;[T](String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $at$minus$greater" class="name">@-&gt;</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="point">point: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@@-&gt;[T](point:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ListeningSupport</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.constraints.Constrainable#_debugConstraints" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="_debugConstraints:Boolean"></a>
+      <a id="_debugConstraints:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_debugConstraints</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@_debugConstraints:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Constrainable</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.styling.ApplyTrait#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(cl:ApplyTrait.this.Self=&gt;Unit):ApplyTrait.this.Self"></a>
+      <a id="apply((Self)⇒Unit):Self"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="cl">cl: (<a href="#Self&lt;:com.idyria.osi.vui.core.styling.CommonVUIElementTrait" class="extmbr" name="com.idyria.osi.vui.javafx.svg.JFXSVGPath.Self">Self</a>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="#Self&lt;:com.idyria.osi.vui.core.styling.CommonVUIElementTrait" class="extmbr" name="com.idyria.osi.vui.javafx.svg.JFXSVGPath.Self">Self</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@apply(cl:ApplyTrait.this.Self=&gt;Unit):ApplyTrait.this.Self" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ApplyTrait</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.constraints.Constrainable#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(constraints:com.idyria.osi.vui.core.constraints.Constraints):Constrainable.this.Self"></a>
+      <a id="apply(Constraints):Self"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="constraints">constraints: <span class="extype" name="com.idyria.osi.vui.core.constraints.Constraints">Constraints</span></span>)</span><span class="result">: <a href="#Self&lt;:com.idyria.osi.vui.core.styling.CommonVUIElementTrait" class="extmbr" name="com.idyria.osi.vui.javafx.svg.JFXSVGPath.Self">Self</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@apply(constraints:com.idyria.osi.vui.core.constraints.Constraints):Constrainable.this.Self" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Constrainable</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.constraints.Constrainable#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(constraint:com.idyria.osi.vui.core.constraints.Constraint*):Constrainable.this.Self"></a>
+      <a id="apply(Constraint*):Self"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="constraint">constraint: <span class="extype" name="com.idyria.osi.vui.core.constraints.Constraint">Constraint</span>*</span>)</span><span class="result">: <a href="#Self&lt;:com.idyria.osi.vui.core.styling.CommonVUIElementTrait" class="extmbr" name="com.idyria.osi.vui.javafx.svg.JFXSVGPath.Self">Self</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@apply(constraint:com.idyria.osi.vui.core.constraints.Constraint*):Constrainable.this.Self" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Constrainable</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#base" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="base:DT"></a>
+      <a id="base:Canvas"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">base</span><span class="result">: <span class="extype" name="javafx.scene.canvas.Canvas">Canvas</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@base:DT" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → SGNode</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#changeSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="changeSize(targetWidth:Double,targetHeight:Double):com.idyria.osi.vui.javafx.svg.JFXSVGPath"></a>
+      <a id="changeSize(Double,Double):JFXSVGPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">changeSize</span><span class="params">(<span name="targetWidth">targetWidth: <span class="extype" name="scala.Double">Double</span></span>, <span name="targetHeight">targetHeight: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.idyria.osi.vui.javafx.svg.JFXSVGPath">JFXSVGPath</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@changeSize(targetWidth:Double,targetHeight:Double):com.idyria.osi.vui.javafx.svg.JFXSVGPath" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Scale SVG and update group size
+</p>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#clear" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clear:Unit"></a>
+      <a id="clear:Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clear</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@clear:Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a></dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#convertMouseEventToClickEvent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="convertMouseEventToClickEvent(ev:javafx.scene.input.MouseEvent):com.idyria.osi.vui.core.components.events.VUIClickEvent"></a>
+      <a id="convertMouseEventToClickEvent(MouseEvent):VUIClickEvent"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertMouseEventToClickEvent</span><span class="params">(<span name="ev">ev: <span class="extype" name="javafx.scene.input.MouseEvent">MouseEvent</span></span>)</span><span class="result">: <span class="extype" name="com.idyria.osi.vui.core.components.events.VUIClickEvent">VUIClickEvent</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@convertMouseEventToClickEvent(ev:javafx.scene.input.MouseEvent):com.idyria.osi.vui.core.components.events.VUIClickEvent" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a></dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#convertMouseEventToVUIDragEvent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="convertMouseEventToVUIDragEvent(ev:javafx.scene.input.MouseEvent):com.idyria.osi.vui.core.components.events.VUIDragEvent"></a>
+      <a id="convertMouseEventToVUIDragEvent(MouseEvent):VUIDragEvent"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertMouseEventToVUIDragEvent</span><span class="params">(<span name="ev">ev: <span class="extype" name="javafx.scene.input.MouseEvent">MouseEvent</span></span>)</span><span class="result">: <span class="extype" name="com.idyria.osi.vui.core.components.events.VUIDragEvent">VUIDragEvent</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@convertMouseEventToVUIDragEvent(ev:javafx.scene.input.MouseEvent):com.idyria.osi.vui.core.components.events.VUIDragEvent" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a></dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#convertMouseEventToVUIMouseEvent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="convertMouseEventToVUIMouseEvent(ev:javafx.scene.input.MouseEvent):com.idyria.osi.vui.core.components.events.VUIMouseEvent"></a>
+      <a id="convertMouseEventToVUIMouseEvent(MouseEvent):VUIMouseEvent"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">convertMouseEventToVUIMouseEvent</span><span class="params">(<span name="ev">ev: <span class="extype" name="javafx.scene.input.MouseEvent">MouseEvent</span></span>)</span><span class="result">: <span class="extype" name="com.idyria.osi.vui.core.components.events.VUIMouseEvent">VUIMouseEvent</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@convertMouseEventToVUIMouseEvent(ev:javafx.scene.input.MouseEvent):com.idyria.osi.vui.core.components.events.VUIMouseEvent" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a></dd></dl></div>
+    </li><li name="com.idyria.osi.tea.thread.ThreadLanguage#createThread" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createThread(cl:&lt;?&gt;):Thread"></a>
+      <a id="createThread(⇒Any):Thread"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createThread</span><span class="params">(<span name="cl">cl: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="java.lang.Thread">Thread</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@createThread(cl:=&gt;Any):Thread" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ThreadLanguage</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#delegate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="delegate:DT"></a>
+      <a id="delegate:Canvas"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">delegate</span><span class="result">: <span class="extype" name="javafx.scene.canvas.Canvas">Canvas</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@delegate:DT" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a></dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#deltaX" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="deltaX(diff:&lt;?&gt;):Unit"></a>
+      <a id="deltaX(Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">deltaX</span><span class="params">(<span name="diff">diff: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@deltaX(diff:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#deltaY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="deltaY(diff:&lt;?&gt;):Unit"></a>
+      <a id="deltaY(Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">deltaY</span><span class="params">(<span name="diff">diff: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@deltaY(diff:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.listeners.ListeningSupport#deregister" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="deregister(listener:AnyRef):Unit"></a>
+      <a id="deregister(AnyRef):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">deregister</span><span class="params">(<span name="listener">listener: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@deregister(listener:AnyRef):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ListeningSupport</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.scenegraph.SGNode#detach" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="detach:com.idyria.osi.vui.core.components.scenegraph.SGNode[T]"></a>
+      <a id="detach:SGNode[Node]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">detach</span><span class="result">: <span class="extype" name="com.idyria.osi.vui.core.components.scenegraph.SGNode">SGNode</span>[<span class="extype" name="javafx.scene.Node">Node</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@detach:com.idyria.osi.vui.core.components.scenegraph.SGNode[T]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SGNode</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#disable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="disable:Unit"></a>
+      <a id="disable:Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">disable</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@disable:Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Do not return anything
+</p><div class="fullcomment"><div class="comment cmt"><p>Do not return anything
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#enable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="enable:Unit"></a>
+      <a id="enable:Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">enable</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@enable:Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#fillColor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fillColor:javafx.scene.paint.Color"></a>
+      <a id="fillColor:Color"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fillColor</span><span class="result">: <span class="extype" name="javafx.scene.paint.Color">Color</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@fillColor:javafx.scene.paint.Color" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.constraints.Constrainable#fixedConstraints" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fixedConstraints:com.idyria.osi.vui.core.constraints.Constraints"></a>
+      <a id="fixedConstraints:Constraints"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fixedConstraints</span><span class="result">: <span class="extype" name="com.idyria.osi.vui.core.constraints.Constraints">Constraints</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@fixedConstraints:com.idyria.osi.vui.core.constraints.Constraints" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Constrainable</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.thread.ThreadLanguage#fork" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fork(cl:&lt;?&gt;):Thread"></a>
+      <a id="fork(⇒Any):Thread"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fork</span><span class="params">(<span name="cl">cl: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="java.lang.Thread">Thread</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@fork(cl:=&gt;Any):Thread" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ThreadLanguage</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.thread.ThreadLanguage#forkJoin" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="forkJoin[T&lt;:&lt;?&gt;](cl:&lt;?&gt;):T"></a>
+      <a id="forkJoin[T](⇒T):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">forkJoin</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="cl">cl: ⇒ <span class="extype" name="com.idyria.osi.tea.thread.ThreadLanguage.forkJoin.T">T</span></span>)</span><span class="result">: <span class="extype" name="com.idyria.osi.tea.thread.ThreadLanguage.forkJoin.T">T</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@forkJoin[T](cl:=&gt;T):T" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ThreadLanguage</dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.scenegraph.SGNode#getParent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getParent[NT&lt;:&lt;?&gt;]:NT"></a>
+      <a id="getParent[NT&lt;:SGGroup[_]]:NT"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getParent</span><span class="tparams">[<span name="NT">NT &lt;: <span class="extype" name="com.idyria.osi.vui.core.components.scenegraph.SGGroup">SGGroup</span>[_]</span>]</span><span class="result">: <span class="extype" name="com.idyria.osi.vui.core.components.scenegraph.SGNode.getParent.NT">NT</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@getParent[NT&lt;:com.idyria.osi.vui.core.components.scenegraph.SGGroup[_]]:NT" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SGNode</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#getPosition" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getPosition:Pair[Int,Int]"></a>
+      <a id="getPosition:Pair[Int,Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getPosition</span><span class="result">: <span class="extype" name="scala.Predef.Pair">Pair</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@getPosition:Pair[Int,Int]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#getX" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getX:Int"></a>
+      <a id="getX:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getX</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@getX:Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#getY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getY:Int"></a>
+      <a id="getY:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getY</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@getY:Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.scenegraph.SGNode#id" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="id:String"></a>
+      <a id="id:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">id</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@id:String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SGNode</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.listeners.ListeningSupport#listeningPoints" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="listeningPoints:scala.collection.immutable.Map[String,scala.collection.mutable.Set[()=&gt;Unit]]"></a>
+      <a id="listeningPoints:Map[String,Set[()⇒Unit]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">listeningPoints</span><span class="result">: <span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.collection.mutable.Set">Set</span>[() ⇒ <span class="extype" name="scala.Unit">Unit</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@listeningPoints:scala.collection.immutable.Map[String,scala.collection.mutable.Set[()=&gt;Unit]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ListeningSupport</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.listeners.ListeningSupport#listeningPointsWith" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="listeningPointsWith:scala.collection.immutable.Map[String,scala.collection.mutable.Set[Any=&gt;Unit]]"></a>
+      <a id="listeningPointsWith:Map[String,Set[(Any)⇒Unit]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">listeningPointsWith</span><span class="result">: <span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.collection.mutable.Set">Set</span>[(<span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@listeningPointsWith:scala.collection.immutable.Map[String,scala.collection.mutable.Set[Any=&gt;Unit]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ListeningSupport</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.scenegraph.SGNode#name" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="name:String"></a>
+      <a id="name:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">name</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@name:String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SGNode</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.listeners.ListeningSupport#on" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="on(point:String)(closure:=&gt;Unit):()=&gt;Unit"></a>
+      <a id="on(String)(⇒Unit):()⇒Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">on</span><span class="params">(<span name="point">point: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="closure">closure: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@on(point:String)(closure:=&gt;Unit):()=&gt;Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ListeningSupport</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#onClick" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onClick(action:&lt;?&gt;):Unit"></a>
+      <a id="onClick((VUIClickEvent)⇒Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onClick</span><span class="params">(<span name="action">action: (<span class="extype" name="com.idyria.osi.vui.core.components.events.VUIClickEvent">VUIClickEvent</span>) ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onClick(action:com.idyria.osi.vui.core.components.events.VUIClickEvent=&gt;Any):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#onClick" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onClick(action:&lt;?&gt;):Unit"></a>
+      <a id="onClick(⇒Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onClick</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onClick(action:=&gt;Any):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#onClickFork" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onClickFork(action:=&gt;Any):Unit"></a>
+      <a id="onClickFork(⇒Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onClickFork</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onClickFork(action:=&gt;Any):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#onClicked" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onClicked(action:com.idyria.osi.vui.core.components.events.VUIClickEvent=&gt;Any):Unit"></a>
+      <a id="onClicked((VUIClickEvent)⇒Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onClicked</span><span class="params">(<span name="action">action: (<span class="extype" name="com.idyria.osi.vui.core.components.events.VUIClickEvent">VUIClickEvent</span>) ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onClicked(action:com.idyria.osi.vui.core.components.events.VUIClickEvent=&gt;Any):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#onClicked" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onClicked(action:=&gt;Any):Unit"></a>
+      <a id="onClicked(⇒Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onClicked</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onClicked(action:=&gt;Any):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#onDoubleClick" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onDoubleClick(action:&lt;?&gt;):Unit"></a>
+      <a id="onDoubleClick(⇒Any):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onDoubleClick</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onDoubleClick(action:=&gt;Any):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#onDrag" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onDrag(action:com.idyria.osi.vui.core.components.events.VUIMouseEvent=&gt;Unit):Unit"></a>
+      <a id="onDrag((VUIMouseEvent)⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onDrag</span><span class="params">(<span name="action">action: (<span class="extype" name="com.idyria.osi.vui.core.components.events.VUIMouseEvent">VUIMouseEvent</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onDrag(action:com.idyria.osi.vui.core.components.events.VUIMouseEvent=&gt;Unit):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#onEnter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onEnter(action:&lt;?&gt;):Unit"></a>
+      <a id="onEnter(⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onEnter</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onEnter(action:=&gt;Unit):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#onKeyPressed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onKeyPressed(cl:Char=&gt;Unit):Unit"></a>
+      <a id="onKeyPressed((Char)⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onKeyPressed</span><span class="params">(<span name="cl">cl: (<span class="extype" name="scala.Char">Char</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onKeyPressed(cl:Char=&gt;Unit):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#onKeyTyped" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onKeyTyped(cl:Char=&gt;Unit):Unit"></a>
+      <a id="onKeyTyped((Char)⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onKeyTyped</span><span class="params">(<span name="cl">cl: (<span class="extype" name="scala.Char">Char</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onKeyTyped(cl:Char=&gt;Unit):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.listeners.ListeningSupport#onMatch" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onMatch(point:String)(closure:PartialFunction[Any,Unit]):Any=&gt;Unit"></a>
+      <a id="onMatch(String)(PartialFunction[Any,Unit]):(Any)⇒Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onMatch</span><span class="params">(<span name="point">point: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="closure">closure: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onMatch(point:String)(closure:PartialFunction[Any,Unit]):Any=&gt;Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ListeningSupport</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#onMousePressed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onMousePressed(action:com.idyria.osi.vui.core.components.events.VUIMouseEvent=&gt;Unit):Unit"></a>
+      <a id="onMousePressed((VUIMouseEvent)⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onMousePressed</span><span class="params">(<span name="action">action: (<span class="extype" name="com.idyria.osi.vui.core.components.events.VUIMouseEvent">VUIMouseEvent</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onMousePressed(action:com.idyria.osi.vui.core.components.events.VUIMouseEvent=&gt;Unit):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#onPositionChanged" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onPositionChanged(action:&lt;?&gt;):Unit"></a>
+      <a id="onPositionChanged((Int,Int)⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onPositionChanged</span><span class="params">(<span name="action">action: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onPositionChanged(action:(Int,Int)=&gt;Unit):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#onShown" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onShown(action:=&gt;Unit):Unit"></a>
+      <a id="onShown(⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onShown</span><span class="params">(<span name="action">action: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onShown(action:=&gt;Unit):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#onUIThread" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onUIThread(cl:=&gt;Unit):Unit"></a>
+      <a id="onUIThread(⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onUIThread</span><span class="params">(<span name="cl">cl: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onUIThread(cl:=&gt;Unit):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.tea.listeners.ListeningSupport#onWith" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onWith[T](point:String)(closure:T=&gt;Unit):T=&gt;Unit"></a>
+      <a id="onWith[T](String)((T)⇒Unit):(T)⇒Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onWith</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="point">point: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="closure">closure: (<span class="extype" name="com.idyria.osi.tea.listeners.ListeningSupport.onWith.T">T</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: (<span class="extype" name="com.idyria.osi.tea.listeners.ListeningSupport.onWith.T">T</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@onWith[T](point:String)(closure:T=&gt;Unit):T=&gt;Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ListeningSupport</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.scenegraph.SGNode#parent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parent:com.idyria.osi.vui.core.components.scenegraph.SGGroup[Any]"></a>
+      <a id="parent:SGGroup[Any]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parent</span><span class="result">: <span class="extype" name="com.idyria.osi.vui.core.components.scenegraph.SGGroup">SGGroup</span>[<span class="extype" name="scala.Any">Any</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@parent:com.idyria.osi.vui.core.components.scenegraph.SGGroup[Any]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SGNode</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#path" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="path:String"></a>
+      <a id="path:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">path</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@path:String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#removeChild" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="removeChild(c:com.idyria.osi.vui.core.components.scenegraph.SGNode[_]):AnyVal"></a>
+      <a id="removeChild(SGNode[_]):AnyVal"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">removeChild</span><span class="params">(<span name="c">c: <span class="extype" name="com.idyria.osi.vui.core.components.scenegraph.SGNode">SGNode</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.AnyVal">AnyVal</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@removeChild(c:com.idyria.osi.vui.core.components.scenegraph.SGNode[_]):AnyVal" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a></dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#revalidate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="revalidate:Unit"></a>
+      <a id="revalidate:Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">revalidate</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@revalidate:Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → SGNode</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#scaleX" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="scaleX:Double"></a>
+      <a id="scaleX:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">scaleX</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@scaleX:Double" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#scaleY" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="scaleY:Double"></a>
+      <a id="scaleY:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">scaleY</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@scaleY:Double" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#setEnabled" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setEnabled(state:&lt;?&gt;):Unit"></a>
+      <a id="setEnabled(Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEnabled</span><span class="params">(<span name="state">state: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@setEnabled(state:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#setName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setName(str:String):Unit"></a>
+      <a id="setName(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setName</span><span class="params">(<span name="str">str: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@setName(str:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Name maps to ID
+</p><div class="fullcomment"><div class="comment cmt"><p>Name maps to ID
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → SGNode</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.scenegraph.SGNode#setParent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setParent(p:&lt;?&gt;):Unit"></a>
+      <a id="setParent(SGGroup[Any]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setParent</span><span class="params">(<span name="p">p: <span class="extype" name="com.idyria.osi.vui.core.components.scenegraph.SGGroup">SGGroup</span>[<span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@setParent(p:com.idyria.osi.vui.core.components.scenegraph.SGGroup[Any]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SGNode</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#setPosition" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setPosition(x:Int,y:Int):Unit"></a>
+      <a id="setPosition(Int,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setPosition</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>, <span name="y">y: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@setPosition(x:Int,y:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#setSVGPath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setSVGPath(url:java.net.URL):Unit"></a>
+      <a id="setSVGPath(URL):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setSVGPath</span><span class="params">(<span name="url">url: <span class="extype" name="java.net.URL">URL</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@setSVGPath(url:java.net.URL):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Change the SVG Path to be drawn
+</p>
+    </li><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#setSVGPath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setSVGPath(str:String):Unit"></a>
+      <a id="setSVGPath(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setSVGPath</span><span class="params">(<span name="str">str: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@setSVGPath(str:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Change the SVG Path to be drawn
+</p>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#setVisible" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setVisible(state:Boolean):Unit"></a>
+      <a id="setVisible(Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setVisible</span><span class="params">(<span name="state">state: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@setVisible(state:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#setX" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setX(x:&lt;?&gt;):Unit"></a>
+      <a id="setX(Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setX</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@setX(x:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.core.components.VUIComponent#setY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setY(y:&lt;?&gt;):Unit"></a>
+      <a id="setY(Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setY</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@setY(y:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate#size" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="size(width:Int,height:Int):Unit"></a>
+      <a id="size(Int,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">size</span><span class="params">(<span name="width">width: <span class="extype" name="scala.Int">Int</span></span>, <span name="height">height: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@size(width:Int,height:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a> → VUIComponent</dd></dl></div>
+    </li><li name="com.idyria.osi.vui.javafx.svg.JFXSVGPath#svgPath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="svgPath:javafx.scene.shape.SVGPath"></a>
+      <a id="svgPath:SVGPath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">svgPath</span><span class="result">: <span class="extype" name="javafx.scene.shape.SVGPath">SVGPath</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@svgPath:javafx.scene.shape.SVGPath" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.idyria.osi.vui.javafx.svg.JFXSVGPath@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">
+              <h3>Inherited from <a href="../JavaFXNodeDelegate.html" class="extype" name="com.idyria.osi.vui.javafx.JavaFXNodeDelegate">JavaFXNodeDelegate</a>[<span class="extype" name="javafx.scene.canvas.Canvas">Canvas</span>]</h3>
+            </div><div class="parent" name="com.idyria.osi.vui.core.components.VUIComponent">
+              <h3>Inherited from <span class="extype" name="com.idyria.osi.vui.core.components.VUIComponent">VUIComponent</span>[<span class="extype" name="javafx.scene.Node">Node</span>]</h3>
+            </div><div class="parent" name="com.idyria.osi.tea.thread.ThreadLanguage">
+              <h3>Inherited from <span class="extype" name="com.idyria.osi.tea.thread.ThreadLanguage">ThreadLanguage</span></h3>
+            </div><div class="parent" name="com.idyria.osi.vui.core.styling.ApplyTrait">
+              <h3>Inherited from <span class="extype" name="com.idyria.osi.vui.core.styling.ApplyTrait">ApplyTrait</span></h3>
+            </div><div class="parent" name="com.idyria.osi.vui.core.components.scenegraph.SGNode">
+              <h3>Inherited from <span class="extype" name="com.idyria.osi.vui.core.components.scenegraph.SGNode">SGNode</span>[<span class="extype" name="javafx.scene.Node">Node</span>]</h3>
+            </div><div class="parent" name="com.idyria.osi.vui.core.constraints.Constrainable">
+              <h3>Inherited from <span class="extype" name="com.idyria.osi.vui.core.constraints.Constrainable">Constrainable</span></h3>
+            </div><div class="parent" name="com.idyria.osi.vui.core.styling.CommonVUIElementTrait">
+              <h3>Inherited from <span class="extype" name="com.idyria.osi.vui.core.styling.CommonVUIElementTrait">CommonVUIElementTrait</span></h3>
+            </div><div class="parent" name="com.idyria.osi.tea.listeners.ListeningSupport">
+              <h3>Inherited from <span class="extype" name="com.idyria.osi.tea.listeners.ListeningSupport">ListeningSupport</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
