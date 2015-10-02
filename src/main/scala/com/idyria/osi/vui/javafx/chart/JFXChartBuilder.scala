@@ -32,43 +32,47 @@ trait JFXChartBuilder extends ChartBuilderInterface[Node] with UtilsTrait {
     
      on("datasets.clean") {
        
-       println(s"Remove all")
-       this.delegate.getData.removeAll()
-       this.delegate.getData.clear()
+       //println(s"Remove all")
+       onUIThread {
+         this.delegate.getData.removeAll()
+         this.delegate.getData.clear()
+       }
        
      }
       
       onWith("dataset.added") {
         ds: XYDataset[_, _] =>
 
-          // Translation Dataset to Series
-          //-------------------------
-          var serie = new XYChart.Series[Number, Number]
-          serie.setName(ds.name)
-
-          //-- Add initial datas
-          ds.values.foreach {
-
-            v =>
-              //onUIThread {
-                serie.getData.add(new XYChart.Data(v.value._1.asInstanceOf[Number], v.value._2.asInstanceOf[Number]))
-              //}
-
+          onUIThread {
+            // Translation Dataset to Series
+            //-------------------------
+            var serie = new XYChart.Series[Number, Number]
+            serie.setName(ds.name)
+  
+            //-- Add initial datas
+            ds.values.foreach {
+  
+              v =>
+                //onUIThread {
+                  serie.getData.add(new XYChart.Data(v.value._1.asInstanceOf[Number], v.value._2.asInstanceOf[Number]))
+                //}
+  
+            }
+  
+            // Wait for data
+            //----------------
+            ds.onWith("value.added") {
+              v: ValueTuple[_, _] =>
+                onUIThread {
+                  serie.getData.add(new XYChart.Data(v.value._1.asInstanceOf[Number], v.value._2.asInstanceOf[Number]))
+                }
+  
+            }
+  
+            // Set to Chart
+            //---------------------
+            this.delegate.getData().add(serie);
           }
-
-          // Wait for data
-          //----------------
-          ds.onWith("value.added") {
-            v: ValueTuple[_, _] =>
-              //onUIThread {
-                serie.getData.add(new XYChart.Data(v.value._1.asInstanceOf[Number], v.value._2.asInstanceOf[Number]))
-              //}
-
-          }
-
-          // Set to Chart
-          //---------------------
-          this.delegate.getData().add(serie);
 
       }
 

@@ -49,7 +49,7 @@ object JavaFXRun {
 
                     }
                 })
-                semaphore.acquire()
+                //semaphore.acquire()
                 r
 
             // No grants in semaphore, start application
