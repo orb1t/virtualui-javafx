@@ -29,6 +29,7 @@ import com.idyria.osi.vui.core.components.controls.SliderBuilderInterface
 import javafx.scene.control.Slider
 import com.idyria.osi.vui.core.components.controls.VUISlider
 import com.idyria.osi.vui.core.components.controls.VUISpinner
+
 import javafx.scene.control.Spinner
 import javafx.scene.control.SpinnerValueFactory
 import com.idyria.osi.vui.core.components.controls.SpinnerBuilderInterface

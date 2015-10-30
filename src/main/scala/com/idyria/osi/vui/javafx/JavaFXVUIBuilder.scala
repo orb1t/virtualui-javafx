@@ -113,6 +113,27 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
           this.delegate.getChildren().add(n.base.asInstanceOf[Node])
 
+        /*this.layout match {
+            case null =>
+           
+            case l => l.applyConstraints(node)
+          }*/
+        // println(s"Adding nodes to ${this.delegate} panel: " + n.base)
+
+        case _ ⇒
+      }
+      this.onMatch("child.removed") {
+
+        case n: SGNode[_] ⇒
+
+          this.delegate.getChildren().remove(n.base.asInstanceOf[Node])
+
+          this.layout match {
+            case p: javafx.scene.layout.Pane =>
+              p.getChildren.remove(n.base.asInstanceOf[Node])
+            case _ =>
+          }
+
         // println(s"Adding nodes to ${this.delegate} panel: " + n.base)
 
         case _ ⇒
@@ -302,16 +323,30 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
       this.setVgap(5.0)
       this.setHgap(5.0)
 
-      override def applyConstraints(node: SGNode[Node], inputConstraints: Constraints) = {
+      // Add//Remove
+      //-------------------
+
+      this.onMatch("child.removed") {
+
+        case n: SGNode[_] ⇒
+
+          getChildren().remove(n.base.asInstanceOf[Node])
+
+        // println(s"Adding nodes to ${this.delegate} panel: " + n.base)
+
+        case _ ⇒
+      }
+
+      override def applyConstraints(node: SGNode[Node]) = {
 
         // Prepare input constraints 
         // FIXME? as Mutable List, in case some constraints are not properly ordered and need to be repushed at the end
         //-------------------
-        var constraints = inputConstraints       
+       /* var constraints = inputConstraints
         node match {
           case constrainable: Constrainable ⇒ constraints = inputConstraints + constrainable.fixedConstraints
           case _ ⇒
-        }
+        }*/
 
         //GridPane.setHgrow(node.base, Priority.NEVER)
         //GridPane.setVgrow(node.base, Priority.NEVER)
@@ -324,11 +359,11 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
         cList.foreach {
           case c => println(s"Constraint: "+c.name)
         }*/
-        
+
         // Resolve
         //------------------
         GridPane.setHgrow(node.base, Priority.NEVER)
-        constraints.foreach {
+        node.fixedConstraints.foreach {
 
           // Row/Column Placement
           //-----------------------
@@ -338,19 +373,19 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
           case Constraint("row", r: Int) ⇒
             //logInfo("[JFX] Pushing node " + node.base + " up one, actual pos:")
-            
+
             //println("[JFX] Setting node row " + node.base + " to "+r)
-            
+
             GridPane.setRowIndex(node.base, r)
 
           case Constraint("pushUp", r: Int) if (GridPane.getRowIndex(node.base) != null) ⇒
             //println("[JFX] Pushing node " + node.base + s" up $r, actual pos: "+GridPane.getRowIndex(node.base))
-            GridPane.setRowIndex(node.base, GridPane.getRowIndex(node.base) - r-1)
-            //println(s"[JFX] -> now "+GridPane.getRowIndex(node.base))
+            GridPane.setRowIndex(node.base, GridPane.getRowIndex(node.base) - r - 1)
+          //println(s"[JFX] -> now "+GridPane.getRowIndex(node.base))
 
           case Constraint("pushUp", r: Int) =>
-            //println("[JFX] Pushing node " + node.base + " up one, but no index has been set")
-            //rowOffset -= r
+          //println("[JFX] Pushing node " + node.base + " up one, but no index has been set")
+          //rowOffset -= r
 
           // Alignment
           //----------------
@@ -424,10 +459,10 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
           //GridPane.setRowSpan(node.base, GridPane.REMAINING)
 
           case Constraint("rowspan", v) ⇒
-            
+
             //println("[JFX] Setting row span " + node.base + " to "+v)
             GridPane.setRowSpan(node.base, v.asInstanceOf[Int])
-            
+
           case Constraint("colspan", v) ⇒
 
             //println("Setting colspan on: " + node.base+" => "+v)
@@ -546,6 +581,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
       //---------------
 
       //-- Create a Default Scene with Group
+      //var topGroup = new Group
       this.setScene(new Scene(new Group))
 
       //-- Per default close, don't hide
@@ -635,7 +671,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
         onUIThread(super.close)
       }
 
-      /* override def show() = {
+      /*override def show() = {
           onUIThread(super.show())
       }*/
 
