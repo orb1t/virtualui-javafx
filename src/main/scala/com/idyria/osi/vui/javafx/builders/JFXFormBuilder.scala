@@ -21,6 +21,7 @@ import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
+import javafx.scene.input.KeyEvent
 import javafx.scene.Node
 import javafx.scene.control.CheckBox
 import javafx.scene.control.ComboBox
@@ -34,6 +35,7 @@ import javafx.scene.control.TextField
 import javafx.scene.control.Toggle
 import com.idyria.osi.vui.core.VBuilder
 import com.idyria.osi.vui.core.ErrorSupportTrait
+import java.awt.Robot
 
 trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterface[Node] with SliderBuilderInterface[Node] with SpinnerBuilderInterface[Node] with ErrorSupportTrait {
 
@@ -419,7 +421,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
     return new JavaFXNodeDelegate(new Spinner[Double](0.0, 0.0, 0.0)) with VUISpinner[Node] {
 
       //base.setEditable(true)
-      
+
       //base.setSnapToTicks(true)
       def setMin(min: Double) = {
         base.getValueFactory.asInstanceOf[SpinnerValueFactory.DoubleSpinnerValueFactory].setMin(min)
@@ -435,7 +437,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       //-----------------
       def setValue(v: Double) = {
         base.getValueFactory.setValue(v.toInt)
-        
+
       }
 
       def getValue: Double = {
@@ -454,6 +456,38 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
 
         })
       }
+
+      //-- Automatic filter and update on key type
+      base.getEditor.setOnKeyTyped(new EventHandler[KeyEvent] {
+        def handle(e: KeyEvent) = {
+
+          e.getCharacter match {
+            case "" =>
+            case c if !(c.charAt(0).isDigit) => e.consume()
+            case c =>
+              //println(s"Changing thorugh prog enter")
+
+             
+              
+              var r = new Robot();
+              r.keyPress(java.awt.event.KeyEvent.VK_ENTER)
+              r.keyRelease(java.awt.event.KeyEvent.VK_ENTER)
+              r.keyPress(java.awt.event.KeyEvent.VK_END)
+              r.keyRelease(java.awt.event.KeyEvent.VK_END)
+              
+              // Prepar Event 
+             /* var ke = new KeyEvent(KeyEvent.KEY_RELEASED, "", "", javafx.scene.input.KeyCode.ENTER, false, false, false, false)
+
+              // Fire
+              base.getEditor.fireEvent(ke)
+              base.fireEvent(ke)*/
+
+             // pressEnter
+            //base.f
+          }
+          // cl(e.getCharacter().charAt(0))
+        }
+      })
 
       // Editable
       //------------------

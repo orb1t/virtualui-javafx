@@ -16,9 +16,10 @@ import javafx.scene.input.KeyEvent
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
 import scala.language.implicitConversions
- 
+import java.awt.Robot
+
 class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node] {
- 
+
   //---------------------------------------
   // Node
   //---------------------------------------
@@ -34,18 +35,18 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
   def base: DT = delegate
   override def revalidate = delegate match {
     case g: Group => g.requestLayout()
-    case _        =>
+    case _ =>
   }
 
-  def clear : Unit = {
-    
+  def clear: Unit = {
+
     delegate match {
       case g: Group => g.getChildren().clear();
-      case p: Pane  => p.getChildren().clear()
-      case _        =>
+      case p: Pane => p.getChildren().clear()
+      case _ =>
 
     }
-    
+
   }
 
   /**
@@ -53,7 +54,7 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
    */
   def removeChild(c: SGNode[_]) = delegate match {
     case g: Group => g.getChildren().remove(c.base)
-    case _        =>
+    case _ =>
   }
 
   /**
@@ -135,9 +136,9 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
     var wrapper: (() => Unit) = {
       () => action
     }
-    
+
     delegate.parentProperty().addListener(new ChangeListener[Parent] {
-      def changed(b: ObservableValue[_ <: Parent] , old:Parent,n:Parent) = {
+      def changed(b: ObservableValue[_ <: Parent], old: Parent, n: Parent) = {
         action
       }
     })
@@ -161,26 +162,36 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
     })*/
 
   }
-  
+
   //------------------------
   // Keyboard
   //------------------------
   override def onKeyPressed(cl: Char => Unit) = {
-    this.delegate.setOnKeyPressed(new EventHandler[KeyEvent]{
-      def handle(e:KeyEvent) = {
+    this.delegate.setOnKeyPressed(new EventHandler[KeyEvent] {
+      def handle(e: KeyEvent) = {
         cl(e.getCharacter().charAt(0))
-      } 
+      }
     })
   }
-  
-   override def onKeyTyped(cl: Char => Unit) = {
-    this.delegate.setOnKeyTyped(new EventHandler[KeyEvent]{
-      def handle(e:KeyEvent) = {
+
+  override def onKeyTyped(cl: Char => Unit) = {
+    this.delegate.setOnKeyTyped(new EventHandler[KeyEvent] {
+      def handle(e: KeyEvent) = {
         cl(e.getCharacter().charAt(0))
-      } 
+      }
     })
   }
-  
+
+  override def pressEnter = {
+    /*// Prepar Event 
+     var ke = new KeyEvent(KeyEvent.ANY,"","",javafx.scene.input.KeyCode.ENTER,false,false,false,false)
+     
+     // Fire
+     this.delegate.fireEvent(ke)*/
+    var r = new Robot();
+    r.keyPress(java.awt.event.KeyEvent.VK_ENTER)
+    r.keyRelease(java.awt.event.KeyEvent.VK_ENTER)
+  }
 
   //---------------------------------------
   // Positioning
@@ -240,13 +251,12 @@ class JavaFXNodeDelegate[DT <: Node](var delegate: DT) extends VUIComponent[Node
 }
 
 object JavaFXNodeDelegate {
-  
-  
-  implicit def convertJFXNodeToSGNode(node: Node) : SGNode[_]= {
+
+  implicit def convertJFXNodeToSGNode(node: Node): SGNode[_] = {
     new JavaFXNodeDelegate(node)
   }
-  
+
   def apply(node: Node) = {
     new JavaFXNodeDelegate(node)
-  } 
+  }
 }

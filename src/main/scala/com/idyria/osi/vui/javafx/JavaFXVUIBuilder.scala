@@ -61,12 +61,14 @@ import com.idyria.osi.tea.logging.TeaLogging
 import com.idyria.osi.tea.logging.TLogSource
 import com.idyria.osi.vui.core.components.controls.ControlsBuilderInterface
 import com.idyria.osi.vui.javafx.builders.JFXFormBuilder
-import com.idyria.osi.vui.javafx.JavaFXRun
 import com.idyria.osi.vui.core.VUIBuilder
 import javafx.event.ActionEvent
 import javafx.geometry.Insets
 import com.idyria.osi.vui.core.components.controls.TableTreeBuilder
 import com.idyria.osi.vui.javafx.table.JFXTableTree
+import com.idyria.osi.vui.core.components.events.VUIClickEvent
+import javafx.event.ActionEvent
+import javafx.application.Platform
 
 class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
     with JFXChartBuilder
@@ -87,7 +89,14 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
   //------------
   override def onUIThread(cl: => Unit) {
 
-    JavaFXRun.onJavaFX({ cl })
+    //JavaFXRun.onJavaFX({ cl })
+
+    Platform.runLater(new Runnable() {
+      def run = {
+        cl
+
+      }
+    })
 
   }
 
@@ -180,7 +189,25 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
 
       override def click = {
         this.delegate.fire
-        //this.delegate.fireEvent(new ActionEvent(null, this.delegate))
+
+        /*println(s"Artificial Click")
+        this.delegate.fireEvent(new ActionEvent(null, this.delegate))*/
+      }
+
+      override def onClicked(action: VUIClickEvent => Any) = {
+
+        delegate.setOnAction(new EventHandler[ActionEvent] {
+          def handle(event: ActionEvent) = {
+            var ev = new VUIClickEvent
+            action(ev)
+          }
+        })
+        /*delegate.setOnMouseClicked(new EventHandler[ActionEvent] {
+          def handle(event: MouseEvent) = {
+            action(event)
+          }
+        })*/
+
       }
 
     }
@@ -342,7 +369,7 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
         // Prepare input constraints 
         // FIXME? as Mutable List, in case some constraints are not properly ordered and need to be repushed at the end
         //-------------------
-       /* var constraints = inputConstraints
+        /* var constraints = inputConstraints
         node match {
           case constrainable: Constrainable ⇒ constraints = inputConstraints + constrainable.fixedConstraints
           case _ ⇒
@@ -598,12 +625,23 @@ class JavaFXVuiBuilder extends VUIBuilder[javafx.scene.Node]
         case g: SGGroup[_] ⇒
 
           println("Adding Group: " + g.base)
+          
           this.getScene().setRoot(g.base.asInstanceOf[Parent])
 
         // Adding nodes only addes to the top node
         case n: SGNode[_] ⇒
 
-          this.getScene().getRoot().asInstanceOf[Group].getChildren().add(n.base.asInstanceOf[Node])
+          
+          // Create Pane to welcome new node 
+          n.base match {
+          case node : Pane => this.getScene().setRoot(node)
+          case node => 
+            println(s"Adding simple node")
+            var p = new StackPane
+            this.getScene().setRoot(p)
+            p.getChildren.add(n.base.asInstanceOf[Node])
+        }
+         // this.getScene().getRoot().asInstanceOf[Group].getChildren().add()
 
       }
 
