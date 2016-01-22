@@ -458,22 +458,46 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       }
 
       //-- Automatic filter and update on key type
-      base.getEditor.setOnKeyTyped(new EventHandler[KeyEvent] {
+      /*base.getEditor.setOnKeyTyped(new EventHandler[KeyEvent] {
         def handle(e: KeyEvent) = {
 
           e.getCharacter match {
             case "" =>
-            case c if !(c.charAt(0).isDigit) => e.consume()
+            //case c if !(c.charAt(0).isDigit) => e.consume()
+            case c if (!c.charAt(0).isLetterOrDigit) => e.consume()
             case c =>
+              
+              //-- Construct new value to be 
+              var newvalue = base.getEditor.getText+e.getCharacter
+              println(s"New valueis: "+newvalue);
+              
+              //-- Check it is valid 
+              try {
+                
+                // Valid -> Plan an Enter Key
+                onUIThread {
+                  base.getEditor.requestFocus()
+                  var r = new Robot();
+                  r.keyPress(java.awt.event.KeyEvent.VK_ENTER)
+                  r.keyRelease(java.awt.event.KeyEvent.VK_ENTER)
+                }
+                
+              } catch {
+                // Not valid :)
+                case e : Throwable => 
+                  println(s"Not valid");
+              }
+              e.consume()
+              
               //println(s"Changing thorugh prog enter")
 
-             
+             /*
               
               var r = new Robot();
               r.keyPress(java.awt.event.KeyEvent.VK_ENTER)
               r.keyRelease(java.awt.event.KeyEvent.VK_ENTER)
               r.keyPress(java.awt.event.KeyEvent.VK_END)
-              r.keyRelease(java.awt.event.KeyEvent.VK_END)
+              r.keyRelease(java.awt.event.KeyEvent.VK_END)*/
               
               // Prepar Event 
              /* var ke = new KeyEvent(KeyEvent.KEY_RELEASED, "", "", javafx.scene.input.KeyCode.ENTER, false, false, false, false)
@@ -487,7 +511,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
           }
           // cl(e.getCharacter().charAt(0))
         }
-      })
+      })*/
 
       // Editable
       //------------------
