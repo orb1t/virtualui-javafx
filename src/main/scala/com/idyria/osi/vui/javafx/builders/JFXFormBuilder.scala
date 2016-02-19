@@ -436,7 +436,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       // Value
       //-----------------
       def setValue(v: Double) = {
-        base.getValueFactory.setValue(v.toInt)
+        base.getValueFactory.setValue(v)
 
       }
 
