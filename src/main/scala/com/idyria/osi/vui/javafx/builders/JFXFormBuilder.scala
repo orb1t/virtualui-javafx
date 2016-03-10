@@ -458,6 +458,57 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       }
 
       //-- Automatic filter and update on key type
+
+      /**
+       * Key typed in Text Field
+       */
+      override def onKeyTyped(cl: Char => Unit) = {
+        base.getEditor.setOnKeyTyped(new EventHandler[KeyEvent] {
+          def handle(e: KeyEvent) = {
+            e.getCharacter match {
+              case c if (!c.charAt(0).isDigit) => e.consume()
+              case _ => cl(e.getCharacter().charAt(0))
+            }
+
+          }
+        })
+      }
+
+      base.getEditor.setOnKeyTyped(new EventHandler[KeyEvent] {
+        def handle(e: KeyEvent) = {
+
+          e.getCharacter match {
+            case c if (!c.charAt(0).isDigit) => e.consume()
+            case _ =>
+          }
+
+        }
+      })
+      
+      // When Focus is lost on Spinner, update value
+      //-------------------
+      base.focusedProperty().addListener(new javafx.beans.InvalidationListener {
+        def invalidated(obs: javafx.beans.Observable) = {
+          base.focusedProperty().get match {
+            case true =>
+
+            //-- On Focus lost, transfer value of editor to valueproperty
+            case false =>
+              base.getValueFactory.setValue(base.getEditor.getText.toDouble)
+          }
+        }
+      })
+
+      /* base.focusedProperty().addListener(new ChangeListener[Boolean] {
+         def changed(obs: ObservableValue[_ <: Boolean], old: Boolean, newValue: Boolean): Unit = {
+          newValue match {
+            case true => 
+              
+            case false => 
+          }
+
+        }
+      })*/
       /*base.getEditor.setOnKeyTyped(new EventHandler[KeyEvent] {
         def handle(e: KeyEvent) = {
 
