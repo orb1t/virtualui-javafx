@@ -22,6 +22,7 @@ import com.idyria.osi.vui.core.components.containers.VUIPanel
 import javafx.scene.layout.Pane
 import java.awt.Container
 import com.idyria.osi.vui.core.components.VUIComponent
+import scala.reflect.ClassTag
 
 
 /**
@@ -32,7 +33,7 @@ trait JFXTableBuilder extends TableBuilderInterface[Node] {
   /**
    *
    */
-  def table[CT]: SGTable[CT, Node] = {
+  def table[CT](implicit tag : ClassTag[CT]): SGTable[CT, Node] = {
 
     return new JavaFXNodeDelegate[TableView[CT]](new TableView[CT]()) with SGTable[CT, Node] {
 

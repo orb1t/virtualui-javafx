@@ -36,10 +36,11 @@ import javafx.scene.control.Toggle
 import com.idyria.osi.vui.core.VBuilder
 import com.idyria.osi.vui.core.ErrorSupportTrait
 import java.awt.Robot
+import scala.reflect.ClassTag
 
 trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterface[Node] with SliderBuilderInterface[Node] with SpinnerBuilderInterface[Node] with ErrorSupportTrait {
 
-  def comboBox[CT]: com.idyria.osi.vui.core.components.form.VUIComboBox[CT, javafx.scene.Node] = {
+  def comboBox[CT](implicit tag : ClassTag[CT]): com.idyria.osi.vui.core.components.form.VUIComboBox[CT, javafx.scene.Node] = {
     return new JavaFXNodeDelegate[ComboBox[CT]](new ComboBox) with com.idyria.osi.vui.core.components.form.VUIComboBox[CT, javafx.scene.Node] {
 
       // Model

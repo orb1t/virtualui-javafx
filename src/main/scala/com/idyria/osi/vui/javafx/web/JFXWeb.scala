@@ -1,7 +1,7 @@
 package com.idyria.osi.vui.javafx.web
 
 import com.idyria.osi.vui.javafx.JavaFXNodeDelegate
-import com.idyria.osi.vui.lib.view.AView
+
 import javafx.event.EventHandler
 import javafx.scene.web.WebErrorEvent
 import javafx.util.Callback
@@ -27,7 +27,7 @@ trait JFXWeb {
 
       private val lc = this
 
-      var targetView: AView[_] = null
+     // var targetView: AView[_] = null
 
       def log(str: String) = {
         println(str);
@@ -88,7 +88,7 @@ window.onerror= function(message,script,line,column,errObj) {
         }
       })*/
 
-      this.base.getEngine.getLoadWorker().stateProperty().addListener(
+      /*this.base.getEngine.getLoadWorker().stateProperty().addListener(
         new javafx.beans.value.ChangeListener[javafx.concurrent.Worker.State] {
           def changed(ov: javafx.beans.value.ObservableValue[_ <: javafx.concurrent.Worker.State], oldState: javafx.concurrent.Worker.State, newState: javafx.concurrent.Worker.State) = {
             if (newState == javafx.concurrent.Worker.State.SUCCEEDED) {
@@ -99,10 +99,10 @@ window.onerror= function(message,script,line,column,errObj) {
                 var window = base.getEngine.executeScript("window").asInstanceOf[netscape.javascript.JSObject]
                 var document = base.getEngine.executeScript("document").asInstanceOf[netscape.javascript.JSObject]
               window.setMember("bridge", lc);
-              window.setMember("base", targetView.renderedNode.get)
+            //  window.setMember("base", targetView.renderedNode.get)
               //document.setMember("base", targetView.renderedNode.get)
               
-              targetView.renderedNode.get.asInstanceOf[JSEngineReference].engine = Some(base.getEngine)
+           //   targetView.renderedNode.get.asInstanceOf[JSEngineReference].engine = Some(base.getEngine)
               base.getEngine.executeScript("""
 console.log = function(message) {
            bridge.log(message);
@@ -132,7 +132,7 @@ window.onerror= function(message,script,line,column,errObj) {
               
             }
           }
-        });
+        });*/
 
       // I/O redirection
       //-------------------
@@ -147,7 +147,7 @@ window.onerror= function(message,script,line,column,errObj) {
         base.getEngine.load(str)
       }
 
-      def setView(v: AView[_]) = {
+     /* def setView(v: AView[_]) = {
         targetView = v
 
         // Add Content
@@ -208,7 +208,7 @@ window.onerror= function(message,script,line,column,errObj) {
             }
         }
       }
-
+*/
     }
 
     w
