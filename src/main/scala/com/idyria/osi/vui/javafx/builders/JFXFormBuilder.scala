@@ -38,6 +38,7 @@ import com.idyria.osi.vui.core.ErrorSupportTrait
 import java.awt.Robot
 import scala.reflect.ClassTag
 
+
 trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterface[Node] with SliderBuilderInterface[Node] with SpinnerBuilderInterface[Node] with ErrorSupportTrait {
 
   def comboBox[CT](implicit tag : ClassTag[CT]): com.idyria.osi.vui.core.components.form.VUIComboBox[CT, javafx.scene.Node] = {
@@ -437,7 +438,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       // Value
       //-----------------
       def setValue(v: Double) = {
-        base.getValueFactory.setValue(v.toInt)
+        base.getValueFactory.setValue(v)
 
       }
 
@@ -459,22 +460,97 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
       }
 
       //-- Automatic filter and update on key type
+
+      /**
+       * Key typed in Text Field
+       */
+      override def onKeyTyped(cl: Char => Unit) = {
+        base.getEditor.setOnKeyTyped(new EventHandler[KeyEvent] {
+          def handle(e: KeyEvent) = {
+            e.getCharacter match {
+              case c if (!c.charAt(0).isDigit) => e.consume()
+              case _ => cl(e.getCharacter().charAt(0))
+            }
+
+          }
+        })
+      }
+
       base.getEditor.setOnKeyTyped(new EventHandler[KeyEvent] {
         def handle(e: KeyEvent) = {
 
           e.getCharacter match {
+            case c if (!c.charAt(0).isDigit) => e.consume()
+            case _ =>
+          }
+
+        }
+      })
+      
+      // When Focus is lost on Spinner, update value
+      //-------------------
+      base.focusedProperty().addListener(new javafx.beans.InvalidationListener {
+        def invalidated(obs: javafx.beans.Observable) = {
+          base.focusedProperty().get match {
+            case true =>
+
+            //-- On Focus lost, transfer value of editor to valueproperty
+            case false =>
+              base.getValueFactory.setValue(base.getEditor.getText.toDouble)
+          }
+        }
+      })
+
+      /* base.focusedProperty().addListener(new ChangeListener[Boolean] {
+         def changed(obs: ObservableValue[_ <: Boolean], old: Boolean, newValue: Boolean): Unit = {
+          newValue match {
+            case true => 
+              
+            case false => 
+          }
+
+        }
+      })*/
+      /*base.getEditor.setOnKeyTyped(new EventHandler[KeyEvent] {
+        def handle(e: KeyEvent) = {
+
+          e.getCharacter match {
             case "" =>
-            case c if !(c.charAt(0).isDigit) => e.consume()
+            //case c if !(c.charAt(0).isDigit) => e.consume()
+            case c if (!c.charAt(0).isLetterOrDigit) => e.consume()
             case c =>
+              
+              //-- Construct new value to be 
+              var newvalue = base.getEditor.getText+e.getCharacter
+              println(s"New valueis: "+newvalue);
+              
+              //-- Check it is valid 
+              try {
+                
+                // Valid -> Plan an Enter Key
+                onUIThread {
+                  base.getEditor.requestFocus()
+                  var r = new Robot();
+                  r.keyPress(java.awt.event.KeyEvent.VK_ENTER)
+                  r.keyRelease(java.awt.event.KeyEvent.VK_ENTER)
+                }
+                
+              } catch {
+                // Not valid :)
+                case e : Throwable => 
+                  println(s"Not valid");
+              }
+              e.consume()
+              
               //println(s"Changing thorugh prog enter")
 
-             
+             /*
               
               var r = new Robot();
               r.keyPress(java.awt.event.KeyEvent.VK_ENTER)
               r.keyRelease(java.awt.event.KeyEvent.VK_ENTER)
               r.keyPress(java.awt.event.KeyEvent.VK_END)
-              r.keyRelease(java.awt.event.KeyEvent.VK_END)
+              r.keyRelease(java.awt.event.KeyEvent.VK_END)*/
               
               // Prepar Event 
              /* var ke = new KeyEvent(KeyEvent.KEY_RELEASED, "", "", javafx.scene.input.KeyCode.ENTER, false, false, false, false)
@@ -488,7 +564,7 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
           }
           // cl(e.getCharacter().charAt(0))
         }
-      })
+      })*/
 
       // Editable
       //------------------
@@ -498,4 +574,5 @@ trait JFXFormBuilder extends FormBuilderInterface[Node] with ListBuilderInterfac
 
     }
   }
+
 }
