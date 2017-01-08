@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.odfi.vui</groupId>
 	<artifactId>vui-javafx</artifactId>
-	<version>1.1.1-SNAPSHOT</version>
+	<version>1.1.1</version>
 	<name>JavaFX Layer for VUI</name>
 
 	<parent>
@@ -164,7 +164,7 @@
 		<dependency>
 			<groupId>org.odfi.vui</groupId>
 			<artifactId>vui-core</artifactId>
-			<version>1.1.1-SNAPSHOT</version>
+			<version>1.1.1</version>
 		</dependency>
 	</dependencies>
 </project>
